@@ -1,0 +1,68 @@
+@import "base";
+
+//=========================================================
+//  Footer Wrapper
+//=========================================================
+#footer {
+  border-top: 5px solid #000;
+  background-color: #000;
+  color: #fff;
+  a {color: #fff;}
+}
+
+//=========================================================
+//  Wired Footer
+//=========================================================
+#footer_staff {
+  background-color: #333333;
+  #contact {
+    padding: 15px 0;
+    a {
+      &:hover { 
+        color: orange;
+        background-color: #333333;
+      }
+    }
+    img {
+      @media (min-width: 510px) {float: right;}
+      @media (max-width: 509px) {display: block;}
+      padding-right: 60px;
+      margin-top: -6px;
+    }
+  } 
+}
+
+//=========================================================
+//  CondeNast brand blocks
+//=========================================================
+#footer_cn {
+  height: 150px;
+  padding: 20px 0 40px 0;
+  font-size: 11px;
+  li {
+    padding: 0 6px 0 6px;
+    height: 140px;
+  }
+  .brand_block {
+    display: inline-block;
+    td {
+      line-height: 15px;
+    }
+  }
+  .worldwide {
+    @include set_background($aws_static + "/abouts/worldwide.png", auto, auto, 5px, 1px);
+    height: 9px;
+  }
+  #cn_right {
+    background: url($aws_static + "/abouts/logo_conde_nast.png") 0/100%;
+    border-right: 1px solid #282828;
+  }
+
+  #footer_gq {width: 190px; table-layout: fixed;}
+  #footer_vogue {width: 250px; table-layout: fixed;}
+  #footer_wired {width: 190px; table-layout: fixed;}
+  #vogue_ww {background-color: #D40000;}
+  #gq_ww {background-color: #04C3D3;}
+  #wired_ww {background-color: #A6A6A6;}
+}
+

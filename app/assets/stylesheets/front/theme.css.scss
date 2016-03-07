@@ -1,0 +1,40 @@
+@import "base";
+
+//============================================
+//  Layout
+//============================================
+.no-margin  {margin: 0;}
+.no-padding {padding: 0;}
+.clearfix {clear: both;}
+.box {
+  background-color: #fff;
+  padding:10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  @include border-radius(5px);
+  @include box-shadow(#555 1px 3px 15px);
+}
+
+.divider_cap {
+  border-bottom: 5px solid #313131;
+  margin: 5px 0;
+  span {
+    text-transform:capitalize;
+    background: #313131;
+    color: #fff;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: 15px;
+    text-align: left;
+    padding: 5px 10px;
+  }
+}
+
+.page_side {
+  img {
+    margin-bottom: 15px;
+  }
+  h6 {
+    margin: 0 auto;
+  }
+}

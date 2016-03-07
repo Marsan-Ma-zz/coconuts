@@ -1,0 +1,36 @@
+<div class="box" id="ok_main">
+  <div id="event_banner"></div>
+  <div id="ok_join" class="event_content">
+    <%= image_tag("#{Setting.aws_static}/events/circles.png", :id => "ok_join_dec") %>
+    <h2>知識開放計畫(Open Knowledge)</h2>
+    <p style="color: #666;">懷抱著引領科技趨勢的使命，《WIRED》國際中文版將從台灣出發，進一步向全球華語地區發聲。我們長久以來都在科技產業耕耘，
+更擁有源源不絕的創新能量。接下來，希望能邀請更多的合作夥伴，一同站在這個國際媒體平台上，讓全世界看見台灣，用知識改變世界！</p>
+    <br>
+  </div>
+  <br><br>
+  <div class="divider_cap"><span>活動說明</span></div>
+  <div id="ok_content" class="event_content">
+    <p>一、《WIRED》將與亞太地區的科技單位、產經智庫、研發中心展開合作，邀請學者專家及科技社群領袖，共同推動<b><a href="http://www.openknowledge.asia" target="_blank">「知識開放計劃」(Open Knowledge)</a></b>，讓珍貴的研究菁華、前瞻視野和科技資訊，能透過網路快速而有效的通達到世界的每個角落。</p>
+    <p>二、我們將開放線上資料庫，提供一般民眾、網站平台以及各個媒體自由取用。為了方便使用者將珍貴的資訊傳遞出去，不需要任何授權手續，你就能免費
+使用這個
+資料庫。</p>
+    <p>三、透過Open Knowledge平台，你不但將與我們一起帶動這股科技創新與知識分享的新浪潮，更有機會和產業專家、意見領袖相互交流，讓全世界見證亞洲
+的科技社群實力！</p>
+  </div>
+  <br><br>
+
+<div class="divider_cap"><span>參與方式</span></div>
+  <div class="event_content">
+    <p>取得開放知識庫的內容，請見<b><%= link_to("取得方法", event_path("feed_api"), :target => "_blank", :class => "btn btn-primary") %></b>。有任何建議或提問，歡迎您<b><%= link_to("連繫我們", "mailto:stacy@wired.tw?Subject=Open-Knowledge", :target => "_blank", :class => "btn btn-warning") %></b></p>
+    <br>
+  </div>
+  <br>
+
+  <div class="divider_cap"><span>參與單位</span></div>
+  <div class="event_content">
+    <%= render "events/sponsors", :title => "產業經濟智庫", :sponsors => @sponsors[0..6] %>
+    <%= render "events/sponsors", :title => "業界領導者", :sponsors => @sponsors[7..10] %>
+    <%= render "events/sponsors", :title => "科技社群領袖", :sponsors => @sponsors[11..14] %>
+  </div>
+
+</div>

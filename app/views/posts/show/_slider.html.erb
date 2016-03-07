@@ -1,0 +1,18 @@
+<div id="slider" class="flexslider">
+  <ul class="slides">
+    <% post.galleries.each do |i| %>
+      <li> 
+        <a href="<%= i.image %>" data-lightbox="example-set" title="<%= i.title %>">
+          <img src="<%= i.image %>" />
+        </a> 
+      </li>
+    <% end %>
+  </ul>
+</div>
+<div id="carousel" class="flexslider">
+  <ul class="slides">
+    <% post.galleries.each do |i| %>
+      <li><img src="<%= i.image %>"/></li>  
+    <% end %>
+  </ul>
+</div>

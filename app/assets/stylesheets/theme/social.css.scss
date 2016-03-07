@@ -1,0 +1,49 @@
+@import "base";
+
+#social-share-button {
+  float: right;
+  //margin: 5px;
+  * {
+    display: inline-block;
+    vertical-align: top;   
+  }
+  h4 {
+    line-height: 16px;
+    font-size: 16px;
+    margin: 0 5px;
+    @media (max-width: 509px) {
+      margin: 5px 0;     
+    }
+  }
+}
+
+pre {
+  white-space: pre-wrap;       /* css-3 */
+  white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+  white-space: -pre-wrap;      /* Opera 4-6 */
+  white-space: -o-pre-wrap;    /* Opera 7 */
+  word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
+#related_posts table td a div {
+  @include base_background(cover);
+}
+
+#social_likes {
+  @media (max-width: 509px) {display: block; }
+  @media (min-width: 510px) {float: right; }
+  * {
+    vertical-align: baseline;   
+    display: inline-block;
+  }
+  iframe {
+    //min-width: auto;
+    //min-height: auto;
+    display: inline-block;
+    max-height: 20px !important;
+    vertical-align: baseline;
+  }
+  #twit_btn iframe{width: 60px !important;}
+}
+
+

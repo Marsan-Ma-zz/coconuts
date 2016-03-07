@@ -1,0 +1,42 @@
+<div class="row-fluid cpanel_form">
+  <div class="span3">
+    <h3><%="Tag #{cap_first(params[:action])}" %></h3>
+    <%= simple_form_for([:cpanel, @tag]) do |f| %>
+      <%= f.input :name, :placeholder => "could be any name", :label => "標籤名" %>
+      <%= f.input :slug, :placeholder => "should be a-z, 0-9, -, _", :label => "網址階層(slug)" %>
+      <%= f.input :description, :placeholder => "description", :label => "說明", :as => "text", :input_html => {:rows => "5"} %>
+    
+      <%= f.submit "儲存", :class => "btn btn-primary" %>
+      <%= link_to("取消", :back, :class => "btn") %>
+    <% end %>
+  </div>
+  
+  <div class="span9">
+    <h3>Existing Tags</h3>
+    <table id='tag_container' class="table table-striped">
+      <thead>
+        <tr class='noborder'>
+          <th>Name</th>
+          <th>Slug</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <% @tags.each do |tag| %>
+        <tr>
+          <td><%= tag.name %><br>
+            <small>
+              <%= link_to "#{tag.post_count} posts", cpanel_posts_path(:tag => tag.id) %> |
+              <%= link_to "Edit", edit_cpanel_tag_path(tag) %> |
+              <%= link_to("Delete", cpanel_tag_path(tag), :method => :delete,
+                  'data-confirm' => "Are you sure to DELETE this post?") if (current_user.admin? && tag.id)  %>
+            </small>
+          </td>
+          <td><%= tag.slug %></td>
+          <td><%= tag.description %></td>
+        </tr>
+      <% end -%>
+    </table>
+    <%= paginate @tags %>    
+  </div>
+</div>
+

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head><%= render "layouts/head_meta" %></head>
+  <body class="<%= controller_name %> <%= action_name %>">
+    <!--[if lt IE 7]>
+      <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+    <![endif]-->
+    <div id="content_outer">
+      <!-- body -->
+      <div class="main-container">
+        <div class="main wrapper clearfix">
+          <article><%= yield %></article>
+        </div>
+      </div>
+    </div>
+    <%= javascript_include_tag "application" %>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+<div class="row-fluid cpanel_full_form">
+  <div class="span12">
+    <form action='/cpanel/notes/word_count' method='get' target='_top' id="thin_form">
+      <label>開始日</label><input name="start_time" type='text' value="<%= params[:start_time] %>" class="datepicker" />
+      <label>結束日</label><input name="end_time" type='text' value="<%= params[:end_time] %>" class="datepicker" />
+      <label>字單價</label><input name="perword" type='text' value="<%= params[:perword] %>" />
+      <button type='submit' class="btn btn-primary"><span>計算</span></button>
+    </form>
+
+    <h3>Word Count</h3>
+    <table class="table table-striped">
+      <thead>
+        <tr class='noborder'>
+          <th>Author</th>
+          <th>Article Count</th>
+          <th>Word Count</th>
+          <th>Articles</th>
+          <th>Detail</th>
+        </tr>
+        <% authors = cal_word_counts(params[:start_time], params[:end_time]) %>
+        <% authors.keys.each do |name| %>
+          <tr>
+            <td><%= name %></td>
+            <td><%= authors[name]["article_count"] %></td>
+            <td><%= authors[name]["word_count"] %></td>
+            <td><pre><%= author_posts_title(name, params[:start_time], params[:end_time]) %></pre></td>
+            <td><%= link_to("詳細", "/cpanel/notes/author_detail?name=#{name}&start_time=#{params[:start_time]}&end_time=#{params[:end_time]}", :class => "btn") %></td>
+          </tr>
+        <% end %>
+      </thead>
+    </table>
+
+</div>
+

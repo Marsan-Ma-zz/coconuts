@@ -1,0 +1,43 @@
+<div class="main wrapper clearfix feature">
+  <!-- Main -->
+  <article class="<%= @mp_class %>">               
+    <h3>Wired Feature</h3>
+    <div class="feature-cover" style="background-image: url('<%= @feature.thumbnail %>')"></div>
+    <header>
+      <h4><%= trim(@feature.title, 70) %></h4>
+      <p><%= trim(@feature.excerpt, 120) %></p>
+    </header>
+  </article>
+
+  <!-- middle -->
+  <aside>
+    <ul class="post-list clearfix">
+      <% @posts[0..2].each do |i| %>
+        <li>
+          <div class="post excerpt" style="height:200px;">
+            <a href="<%= post_path(i.slug) %>" target="_blank">
+              <div class="post-cover" style="background-image: url('<%= i.thumbnail %>')"></div>
+              <h4><%= trim(i.title, 70) %></h4>
+              <p><%= trim(i.excerpt, 120) %></p>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </aside>
+
+  <!-- small -->
+  <ul class="post-list clearfix">
+    <% @posts[3..-1].each do |i| %>
+      <li>
+        <div class="post excerpt" style="height:266px;">
+          <a href="<%= post_path(i.slug) %>" target="_blank">
+            <div class="post-cover" style="background-image: url('<%= i.thumbnail %>')"></div>
+            <h4><%= trim(i.title, 70) %></h4>
+          </a>
+        </div>
+      </li>   
+    <% end %>                 
+  </ul>
+
+</div>

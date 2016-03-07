@@ -1,0 +1,24 @@
+<div class="row-fluid cpanel_form cpanel_fullform">
+  <div class="span12">
+    <h3><%="Feed #{cap_first(params[:action])}" %></h3>
+    <%= simple_form_for([:cpanel, @feed]) do |f| %>
+      <%= f.input :title, :label => "RSS命名" %>
+      <%= f.input :slug, :label => "RSS網址" %>
+      <%= f.input :comment, :label => "內部註解" %>
+      <% f.association :authors, :collection => User.where(:is_editor => true).desc(:name), :label => "訂閱作者", :as => "check_boxes" %>
+      <label class="select optional" for="post_status">Category</label>
+      <div class="check_box_sea" style="height: 50px;">
+        <%= f.association :categories, :collection => Category.asc(:name), :label => false, :as => "check_boxes" %>
+      </div>
+      <label class="select optional" for="post_status">Tags</label>
+      <div class="check_box_sea" style="height: 150px;">
+        <%= f.association :tags, :collection => Tag.asc(:name), :label => false, :as => "check_boxes" %>
+      </div>
+      <%= f.submit "儲存", :class => "btn btn-primary" %>
+      <%= link_to("取消", :back, :class => "btn") %>
+    <% end %>
+  </div>
+</div>
+  
+
+

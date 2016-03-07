@@ -1,0 +1,10 @@
+<div class="chapter_brief" style="display: block;">
+  <a href="<%= i.post_ids.include?(' ') ? feature_path(i.slug) : i.post_ids %>">
+    <div class="chapter_img" style="background-image: url('<%= i.thumbnail %>')"></div>
+    <div class="chapter_txt">
+      <h3><%= i.title %> <span class="period">(<%= i.published_at.to_s[0..6] %>)</span></h3><hr>
+      <p><%= i.excerpt %></p>
+    </div>
+  </a>
+</div>
+

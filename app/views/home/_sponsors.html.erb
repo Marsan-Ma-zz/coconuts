@@ -1,0 +1,20 @@
+<div id="footer_sponsors" class="box">
+  <div class="divider_cap"><span><%= title %></span></div>
+  <div id="sponsors">
+    <% sponsors.each do |s| %>
+      <div class="sponsor" title="Click to flip">
+        <div class="sponsorFlip">
+          <%= image_tag("#{Setting.aws_static}/flipwall/sponsors/" + s[0] + ".png", :size => "100%x100%", :alt => "More...") %>
+        </div>
+        <div class="sponsorData">
+          <div class="sponsorDescription">
+            <%= s[1] %>
+          </div>
+          <div class="sponsorURL">
+            <%= link_to(s[2], "http://" + s[2], :target => "_blank") %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

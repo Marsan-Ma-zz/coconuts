@@ -1,0 +1,13 @@
+<li>
+  <div class="post excerpt <%= post_css_class(post.get_cat) %>">
+    <h3><%= post.get_cat %><time><%= post_date(post.published_at) %></time></h3>
+    <a href="<%= post_path(post.slug) %>" title="<%= post.title %>" >
+      <div class="post-cover" style="background-image: url('<%= post.thumbnail %>')">
+        <div class="tri"></div>
+      </div>
+      <h4><%= trim(post.title, 50) %></h4>
+      <p><%= trim(post.excerpt, 150) %></p>
+    </a>
+  </div>
+</li>
+

@@ -1,0 +1,6 @@
+<h3>Wired Insiders</h3>
+<ul class="post-list clearfix" id="insiders">
+  <% @insiders.each do |i| %>
+    <%= render "insiders/insider", :insider => i %>
+  <% end %>
+</ul>  

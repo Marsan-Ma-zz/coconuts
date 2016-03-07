@@ -1,0 +1,9 @@
+<div class="box" style="text-align: center;">
+  <%= image_tag("#{Setting.aws_static}/events/nice.png") %>
+  <h2> 總編輯的話 --- by 程九如</h2>
+  <hr>
+  <pre id="event_maintxt">
+  <%= raw(Note.where(:key => "from_chief_editor").first.value) %>
+  </pre>
+
+</div>

@@ -1,0 +1,52 @@
+<div class="row-fluid cpanel_form">
+  <div class="span3">
+    <h3><%="Feature #{cap_first(params[:action])}" %></h3>
+    <%= simple_form_for([:cpanel, @feature]) do |f| %>
+      <%= f.input :title, :placeholder => "Feature Title", :label => "Title" %>
+      <%= f.input :slug, :placeholder => "僅可包含a-z與底線", :label => "網址(slug)" %>
+      <%= f.input :excerpt, :placeholder => "Excerpt", :label => "摘要", :as => "text", :input_html => {:rows => "5"} %>
+      <%= f.input :thumbnail, :placeholder => "thumbnail", :label => "插圖" %>
+      <%= f.input :post_ids, :placeholder => "Post IDs", :label => "文章ID" %>
+      <%= f.input :published_at, :label => "發佈時間", :class => "datepicker", :"data-date-format" => "yyyy-mm-dd" %>
+      <%= f.input :public, :label => "發佈", :as => :radio_buttons %>
+    
+      <%= f.submit "儲存", :class => "btn btn-primary" %>
+      <%= link_to("取消", :back, :class => "btn") %>
+    <% end %>
+  </div>
+  
+  <div class="span9">
+    <h3>Existing Features</h3>
+    <table id='feature_container' class="table table-striped">
+      <thead>
+        <tr class='noborder'>
+          <th>Thumbnail</th>
+          <th>Title</th>
+          <th>Slug</th>
+          <th>Excerpt</th>
+          <th>Publish</th>
+          <th>Post IDs</th>
+        </tr>
+      </thead>
+      <% @features.each do |i| %>
+        <tr>
+          <td><%= image_tag(i.thumbnail, :width => '100px;') %></td>
+          <td><%= i.title %><br>
+            <small>
+              <%= link_to("Show", feature_path(i.slug), :target => "_blank") %> |
+              <%= link_to("Edit", edit_cpanel_feature_path(i)) %> |
+              <%= link_to("Delete", cpanel_feature_path(i), :method => :delete,
+                  'data-confirm' => "Are you sure to DELETE this feature?") if (current_user.admin? && i.id)  %>
+            </small>
+          </td>
+          <td><%= i.slug %></td>
+          <td><%= trim(i.excerpt, 100) %></td>
+          <td><%= i.published_at.to_s[0..9] %></td>
+          <td><%= i.post_ids %></td>
+        </tr>
+      <% end -%>
+    </table>
+    <%= paginate @features %>    
+  </div>
+</div>
+

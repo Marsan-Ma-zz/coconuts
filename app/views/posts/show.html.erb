@@ -1,0 +1,11 @@
+<div class="main wrapper clearfix">
+  <% cache('wired_post_' + @post.slug) do %>
+    <article class="<%= @mp_class %>">
+      <%= render "posts/show/header", :post => @post %>
+      <%= render "posts/show/body", :post => @post %>
+    </article>
+  <% end %>
+  <aside><%= render "shared/sidebar/sidebar" if (@post.format != "full") %></aside>
+</div>
+<%= render "shared/footer/sponsors" %>        
+

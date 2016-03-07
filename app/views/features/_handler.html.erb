@@ -1,0 +1,18 @@
+<div id="event_chapters">
+  <div class="divider_cap"><span>章節選擇</span></div>
+  <% for i in 1..8 %>
+    <div class="chapter_brief" <%= "style='display: block'" if (chapters[i-1].title == chap_title) %>>
+      <a href="<%= event_path(:id => "big_data_magzine", :part => i) %>">
+        <div class="chapter_img" style="background-image: url('<%= chapters[i-1].thumbnail %>')"></div>
+        <div class="chapter_txt">
+          <h3><%= chapters[i-1].title %></h3><hr>
+          <p><%= chapters[i-1].excerpt %></p>
+        </div>
+      </a>
+    </div>
+  <% end %>
+  <% for i in 1..8 %><%= link_to(i, "#", :class => "event_chapter_handler", :target => "chapter_#{i}") %><% end %>
+  <br><br><br>
+  <div class="divider_cap"><span><%= chap_title %></span></div>
+</div>
+

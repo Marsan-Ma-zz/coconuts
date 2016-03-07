@@ -1,0 +1,30 @@
+<% author = User.where(:name => params[:name]).first %>
+<% posts = Post.where(:author_id => author.id, :published_at.gt => params[:start_time], :published_at.lt => params[:end_time]).desc(:published_at) %>
+
+<div class="row-fluid cpanel_full_form">
+  <div class="span12">
+    <h3>Author Detail : <%= "#{author.name} (#{author.email})" %></h3>
+    <table class="table table-striped">
+      <thead>
+        <tr class='noborder'>
+          <th>Title</th>
+          <th>Date</th>
+          <th>Word Count</th>
+          <th>View Count</th>
+          <th>Comment Count</th>
+        </tr>
+        <% posts.each do |i| %>
+          <tr>
+            <td><%= i.title %></td>
+            <td><%= i.published_at.to_s[0..-7].gsub('T', ' ') %></td>
+            <td><%= i.content.size %></td>
+            <td><%= i.count_view %></td>
+            <td><%= link_to("", "#{post_url(i.slug)}#disqus_thread", :target => "_blank") %></td>
+          </tr>
+        <% end %>
+      </thead>
+    </table>
+  </div>
+</div>
+
+<%= render "cpanel/posts/disqus_script" %>

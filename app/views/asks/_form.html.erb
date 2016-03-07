@@ -1,0 +1,15 @@
+<%= image_tag(Setting.aws_static + '/events/open_knowledge_ask1.jpg', :style => "position:absolute; top: 0; left: 0; width: 100%; max-width: 640px; max-height: 80px;") %>
+
+<div style="margin-top: 100px; font-size: 18px; overflow-y: scroll; overflow-x: hidden;">
+  <h3 style="margin: 5px;">Wired Forum 提問</h3>
+  <%= simple_form_for(@ask) do |f| %>
+    <%= f.input :name, :label => "您的大名", :style => "margin: 0 10px; size: 40; margin-bottom: 20px;" %>
+    <%= f.input :description, :label => "您的提問", :as => "text", :input_html => {:rows => 5} %>
+    <%= f.submit "發送", :style => "width: 50%; height: 50px;" %>
+  <% end %>
+</div>
+
+<br>
+<br>
+<br>
+<%= image_tag(Setting.aws_static + '/events/open_knowledge_ask2.jpg', :style => "width: 100%; max-width: 640px;") %>

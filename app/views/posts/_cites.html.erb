@@ -1,0 +1,31 @@
+<table width="100%" border="0" cellspacing="5" class="post-table">
+  <tbody>
+    <tr>
+      <th width="33%">Source </th>
+      <th width="33%">Photo Credit </th>
+      <th width="34%">Tags</th>
+    </tr>
+    <tr>
+      <!-- Source -->
+      <td valign="top">
+        <% cites.where(:source.ne => "photo_credit").each do |i| %>
+          <%= i.source %> <%= link_to(i.name, i.url, :target => "_blank") %><br>
+        <% end %>
+      </td>
+      <!-- Photo Credit -->
+      <td valign="top">
+        <% cites.where(:source => /photo/).each do |i| %>
+          <%= i.source %> <%= link_to(i.name, i.url, :target => "_blank") %><br>
+        <% end %>
+      </td>
+      <!-- Tags -->
+      <td valign="top" id="post_tags">
+        <% @post.tags.each_with_index do |i, idx| %>
+          <%= link_to(i.name, posts_path(:tag => i.slug)) %>
+          <% if not idx == (@post.tags.size - 1) %>, <% end %>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+

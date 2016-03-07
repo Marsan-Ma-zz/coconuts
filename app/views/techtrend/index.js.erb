@@ -1,0 +1,7 @@
+$("#infinite_chips").append("<%= escape_javascript(render(@bullets)) %>");
+
+//stop loading while end of pages
+<% if @eop %>
+  $("#infinite_chips").attr("bname", "ending");
+  $("#infinite_ending").show();
+<% end %>

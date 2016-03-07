@@ -1,0 +1,45 @@
+<div class="cpanel_form cpanel_fullform">
+<%= simple_form_for([:cpanel,@user]) do |f| %>
+  <div id="upload_img_preview"><%= get_avatar(@user, 128) %></div>
+  <%= f.input :avatar %>
+  <%= f.input :login, :as => "hidden" %>
+  <%= f.input :name %>
+  <%= f.input :password, :as => "hidden", input_html: { value: '!@#$%^&*()' } %>
+  <%= f.input :password_confirmation, :as => "hidden", input_html: { value: '!@#$%^&*()' } %>
+  <%= f.input :email, :as => :email, :input_html => { :class => "xxlarge" } %>
+  <%= f.input :location, :as => "hidden" %>
+  <%= f.input :is_editor, :label => "Is Editor", :as => :radio_buttons %>
+  <%= f.input :is_insider, :label => "Is Insider", :as => :radio_buttons %>
+  <%= f.input :order, :label => "Insider Order" %>
+  <%= f.input :tagline, :as => "text", :placeholder => "Insider的介紹 （一般使用者可留空）", :input_html => { :class => "span8", :rows => "5" } %>
+
+  <% if current_user.admin? %>
+    <%= f.input :sign_in_count, :readonly => true %>
+    <%= f.input :last_sign_in_at, :readonly => true %>
+    <%= f.input :current_sign_in_at, :readonly => true %>
+    <%= f.input :last_sign_in_ip, :readonly => true %>
+    <%= f.input :current_sign_in_ip, :readonly => true %>
+
+    <% if not @user.authorizations.blank? %>
+      <div class="control-group">
+        <%= f.label :authorizations, :class => "control-label" %>
+        <table class="controls" style="display:block;">
+          <% @user.authorizations.each do |auth| %>
+            <tr>
+              <td style="width:100px;"><%= auth.provider %></td>
+              <td><%= auth.uid %></td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+    <% end %>
+  <% end %>
+
+  <div class="form-actions">
+    <%= f.submit "儲存", :class => "btn btn-primary" %>
+    <%= link_to "取消", cpanel_users_path, :class => "btn" %>
+    <%= link_to '删除此用户', cpanel_user_path(@user), 'data-confirm' => 'Are you really want to delete this user?', 
+                :method => :delete, :class => "btn btn-danger pull-right" if (current_user.admin? && @user.id) %>
+  </div>
+<% end %>
+</div>

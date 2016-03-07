@@ -1,0 +1,2 @@
+#!/bin/bash
+s3cmd sync images s3://wired-tw/

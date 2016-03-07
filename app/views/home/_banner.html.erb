@@ -1,0 +1,18 @@
+<header>
+  <h3>What's Hot</h3>
+  <div class="flexslider" id="home_banner">
+    <ul class="slides">
+      <% banners.each do |i| %>
+        <li>
+          <a href="<%= post_path(i.slug) %>">
+            <div><%= image_tag(i.thumbnail) %></div>
+            <p class="flex-caption design">
+              <%= i.title %>
+            </p>
+          </a>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</header>
+

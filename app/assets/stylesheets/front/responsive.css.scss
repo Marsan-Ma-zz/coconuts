@@ -1,0 +1,231 @@
+//frame
+.page_main {
+  float: left;
+  vertical-align: top;
+}
+.page_side {
+  float: right;
+  vertical-align: top;
+}
+
+#sticky_navbar_wrap { //class added by js
+  z-index: 2147483647; //32-bit max
+  position:fixed;
+  width:100%;
+  top:0;
+}
+
+ul {
+  -webkit-padding-start: 0px;
+}
+
+//======================================================
+//  Mobile ( width < 510px )
+//======================================================
+@media (max-width: 509px) {
+  .page_wrap { margin: 1% 1%;}
+  #header_top, #sticky_navbar { margin: 0 1%; }
+  #header_top {
+    padding: 5px 15px;
+    margin: 0 1%;
+    #header_logo, #header_ad {
+      width: 100%;
+    }
+  }
+  #sticky_navbar {
+    li a {
+      font-size: 12px;
+      padding: 10px 5px;
+      line-height: 30px;
+      height: 30px;
+    }
+    img {height: 30px;}
+    .mobile_cats {
+      margin: 2px 0;
+    }
+    #main_nav {
+      height: 30px;
+    }
+    .nav_divider {display: none;}
+  }
+  #slideshow {
+    display: none;
+  }
+  .sponsor{
+    width:46%;
+    .sponsorDescription{top:10%;}
+    .sponsorURL{top:20%;}
+  }
+  .page_main {width: 100%;}
+  .page_side {display: none;}
+  .home_cat {
+    width: 100%;
+    .cat_img {height: 150px;}
+  }
+  .nav_cats a{display: none;}
+  .mobile_divider {
+    height: 0px;
+    margin: 0px;
+    border-top: solid 1px #5d5d5d;
+    border-bottom: solid 1px #929292;
+    display: none;
+  }
+  #footer .page_wrap {
+    margin: 0 1%;
+    #cn_right {display: none;}
+    #footer-vogue {display: none;}
+    #footer-gq {display: none;}
+  }
+}
+
+//======================================================
+//  Pad ( 510px <= width < 1200px )
+//======================================================
+@media (min-width: 510px) and (max-width: 1199px) {
+  .page_wrap {margin: 2% 2%; }
+  #header_top, #sticky_navbar { margin: 0 2%; }
+  #header_top {
+    padding: 20px 25px;
+    #header_logo {
+      width: 30%;
+    }
+    #header_ad {
+      width: 60%;
+    }
+  }
+  #sticky_navbar {
+    li a {
+      font-size: 12px;
+      padding: 10px 5px;
+      line-height: 30px;
+      height: 30px;
+    }
+    img {height: 30px;}
+    .mobile_cats {display: none;}
+  }
+  #slideshow {
+    li {
+      height:300px;
+      .heading {
+        margin-top: 20px;
+        line-height: 20px;
+        font-size:12px;
+      }
+      .description {
+        height:30%;
+        h2 {
+          padding: 0 10px;
+          line-height: 14px;
+          font-size:14px;
+        }
+        p {
+          padding: 0 10px;
+          line-height: 14px;
+          font-size: 12px;
+        }
+      }
+      .bgDescription {
+        height:30%;
+      }
+    }
+  }
+  .sponsor{
+    width:18.0%;
+    .sponsorDescription{top:10%;}
+    .sponsorURL{top:25%;}
+  }
+  .page_main {width: 66%;}
+  .page_side {width: 33%;}
+  .home_cat {
+    width: 47%;
+    .cat_img {height: 180px;}
+  }
+  .mobile_divider {display: none;}
+  #footer .page_wrap {
+    margin: 0 2%;
+    #cn_right {display: none;}
+  }
+}
+
+//======================================================
+//  PC ( 1200px <= width )
+//======================================================
+@mixin width_limit($height_margin:0) {
+  margin: $height_margin auto;
+  max-width: 1100px;
+}
+
+@media (min-width: 1200px) {
+  .page_wrap {
+    @include width_limit(1%);
+  }
+  #header_top, #sticky_navbar { 
+    @include width_limit(0);
+  }
+  #header_top {
+    padding: 30px 35px;
+    @include width_limit(0);
+    #header_logo {
+      width: 30%;
+    }
+    #header_ad {
+      width: 60%;
+    }
+  }
+  #sticky_navbar {
+    li a {
+      font-size: 12px;
+      padding: 10px 9px;
+      line-height: 30px;
+      height: 30px;
+    }
+    img {height: 30px;}
+    .mobile_cats {display: none;}
+  }
+  #slideshow {
+    li {
+      height:360px;
+      .heading {
+        margin-top: 25px;
+        line-height: 30px;
+        font-size:18px;
+      }
+      .description {
+        height:25%;
+        h2 {
+          margin: 10px 0;
+          padding: 0px 20px;
+          line-height: 16px;
+          font-size: 18px;
+        }
+        p {
+          margin: 0;
+          padding: 0 20px;
+          line-height: 14px;
+          font-size: 14px;
+        }
+      }
+      .bgDescription {
+        height:25%;
+      }
+    }
+  }
+  .sponsor{
+    width:15.0%;
+    .sponsorDescription{top:25%;}
+    .sponsorURL{top:40%;}
+  }
+  .page_main {width: 66%;}
+  .page_side {width: 33%;}
+  //.page_main {width: 74%;}
+  //.page_side {width: 24%;}
+  .home_cat {
+    width: 47%;
+    .cat_img {height: 200px;}
+  }
+  .mobile_divider {display: none;}
+  #footer .page_wrap {
+    @include width_limit(0);
+    #cn_right {width: 210px;}
+  }
+}

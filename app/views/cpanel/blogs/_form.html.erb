@@ -1,0 +1,61 @@
+<div class="row-fluid cpanel_form">
+  <div class="span3">
+    <h3><%="Feed #{cap_first(params[:action])}" %></h3>
+    <%= simple_form_for([:cpanel, @blog]) do |f| %>
+      <%= f.association :author, :collection => User.where(:is_editor => true).asc(:name), :label => "作者" %>
+      <%= f.association :category, :collection => Category.all, :label => "預設分類" %>
+      <%= f.input :feed, :label => "RSS feed位址" %>
+      <%= f.input :prefix, :label => "文章標題prefix" %>
+      <%= f.input :publish, :label => "是否能直接publlish", :as => :radio_buttons %>
+      <%= f.input :copyright, :label => "是否擁有轉載權", :as => :radio_buttons %>
+      <%= f.input :active, :label => "是否開始自動載入此來源", :as => :radio_buttons %>
+      <%= f.input :comment, :placeholder => "僅供內部管理", :label => "註解", :as => "text", :input_html => {:rows => "5"}%>
+      <%= f.input :script, :label => "script", :as => "text", :input_html => {:rows => "5"} if current_user.admin? %> 
+    
+      <%= f.submit "儲存", :class => "btn btn-primary" %>
+      <%= link_to("取消", :back, :class => "btn") %>
+    <% end %>
+  </div>
+  
+  <div class="span9">
+    <h3>Existing Blogs</h3>
+    <table id='blog_container' class="table table-striped">
+      <thead>
+        <tr class='noborder'>
+          <td>Author</td>
+          <td>Category</td>
+          <td>Feed</td>
+          <td>Repost</td>
+          <td>Comment</td>
+          <td>Active</td>
+          <td>Run</td>
+        </tr>
+      </thead>
+      <% @blogs.each do |blog| %>
+        <tr>
+          <td><%= link_to(get_avatar(blog.author), edit_cpanel_blog_path(blog)) %></td>
+          <td><%= blog.category.name %></td>
+          <td>
+            <%= blog.feed %><br>
+            <small>
+              <%= link_to("Show", blog.feed, :target => "_blank") %> | 
+              <%= link_to("Edit", edit_cpanel_blog_path(blog)) %> | 
+              <%= link_to("Delete", cpanel_blog_path(blog), :method => :delete,
+                  'data-confirm' => "Are you sure to DELETE this blog?") if (current_user.admin? && blog.id)  %>
+            </small>
+          </td>
+          <td><%= blog.copyright %></td>
+          <td><%= blog.comment %></td>
+          <td><%= blog.active %></td>
+          <td><%= link_to("匯入", launch_cpanel_blogs_path(:feed => blog.feed), :class => "btn btn-primary") %></td>
+        </tr>
+      <% end %>
+    </table>
+    <%= paginate @blogs %>
+    <hr>
+    <%= link_to("立刻掃描所有Blogger", launch_cpanel_blogs_path, :class => "btn btn-primary") %>
+  </div>
+</div>
+
+
+

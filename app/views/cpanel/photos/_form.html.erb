@@ -1,0 +1,56 @@
+<div class="row-fluid cpanel_form">
+  <div class="span3">
+    <h3><%="Photo #{cap_first(params[:action])}" %></h3>
+    <%= simple_form_for([:cpanel, @photo]) do |f| %>
+      <%= f.input :title, :placeholder => "如果有，將顯示在圖片下方。", :label => "圖片標題" %>
+      <%= f.input :slug, :placeholder => "should be a-z, 0-9, -, _", :label => "網址階層(slug)" %>
+      <%= f.input :photo %><div id="upload_img_preview"></div>
+      <%= f.input :description, :placeholder => "description", :label => "說明", :as => "text", :input_html => {:rows => "5"} %>
+    
+      <%= f.submit "儲存", :class => "btn btn-primary" %>
+      <%= link_to("取消", :back, :class => "btn") %>
+    <% end %>
+  </div>
+  
+  <div class="span9">
+    <h3>Existing Photos</h3>
+    <table id='photo_container' class="table table-striped">
+      <thead>
+        <tr class='noborder'>
+          <th>Photo</th>
+          <th>Title</th>
+          <th>Slug</th>
+          <th>Description</th>
+          <th>created_at</th>
+        </tr>
+      </thead>
+      <% @photos.each do |photo| %>
+        <tr>
+          <td>
+            <%= link_to(image_tag(photo.photo.tiny), photo.photo.url, :target => "_blank") %>
+          <br>
+          <td><%= trim(photo.title, 20) %><br>
+            <small>
+              <%= link_to("Origin", photo.photo.url, :target => "_blank") %> |
+              <%= link_to("Normal", photo.photo.normal.url, :target => "_blank") %> |
+              <%= link_to("Small", photo.photo.small.url, :target => "_blank") %> |
+              <%= link_to("Tiny", photo.photo.tiny.url, :target => "_blank") %>
+            </small>
+          </td>
+          <td><%= trim(photo.slug, 20) %></td>
+          <td><%= photo.description %></td>
+          <td>
+            <%= photo.created_at.to_s[0..-7] %><br>
+            <small>
+              <%= link_to "Edit", edit_cpanel_photo_path(photo) %> |
+              <%= link_to("Delete", cpanel_photo_path(photo), :method => :delete,
+                  'data-confirm' => "Are you sure to DELETE this post?") if (current_user.admin? && photo.id)  %>
+            </small>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+    <%= paginate @photos %>
+  </div>
+</div>
+

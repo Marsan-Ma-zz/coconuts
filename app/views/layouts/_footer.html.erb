@@ -1,0 +1,23 @@
+<div class="footer-container">
+  <nav class="wrapper">
+  <ul class="subnav clearfix">
+    <li><%= link_to("Editor's Note", event_path(:id => "from_chief_director"), :target => "_blank") %></li>
+    <li><%= link_to("Contact Us", "/abouts/contact", :target => "_blank") %></li>
+    <li><%= link_to("Wired Staff", "/abouts/staff", :target => "_blank") %>
+    <li><%= link_to("Privacy", "/abouts/privacy", :target => "_blank") %></li>
+    <li><%= link_to("Career", "/abouts/jobs", :target => "_blank") %></li>
+  </ul>
+  </nav>
+  <footer class="">
+    <div class="global-links clearfix wrapper">
+      <ul>
+        <li class="footer-condenast"> <a href="http://www.gq.com.tw/">Conde Nast Digital Taiwan</a></li>
+        <%= render "shared/footer/vogue" %>
+        <%= render "shared/footer/gq" %>
+        <%= render "shared/footer/wired" %>
+      </ul>
+    </div>
+  </footer>
+</div>
+
+<div id="message" class="wrapper"><a href="#content_outer" style="display: block;">Back to top</a></div>

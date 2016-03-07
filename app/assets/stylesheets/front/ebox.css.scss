@@ -1,0 +1,134 @@
+@import "base";
+
+#event_chapters {
+  text-align: left;
+  margin: 0 auto;
+  color: black;
+  .event_chapter_handler {
+    display: inline-block;
+    padding: 5px 20px;
+    margin-left: 1%;
+    color: white;
+    font-size: 16px;
+    background: chocolate;
+    &:not(h3):hover {background: darkcyan;}
+  }
+  .chapter_brief {
+    display: none;
+    background: white;
+    @include flat_stamp();
+    .chapter_txt {
+      padding: 10px;
+      vertical-align: top;
+      color: #333;
+      h3 {
+        margin: 9px 0;
+        font-size: 24px;
+      }
+      p {
+        font-size: 16px;
+      }
+      .period {color: #999;}
+    }
+    .chapter_img {
+      //display: inline-block;
+      //width: 30%;
+      //height: 100%;
+      @include base_background(cover);
+    }
+  }
+}
+
+.ebox {
+  vertical-align: top;
+  background: white;
+  display: inline-block;
+  @include flat_stamp();
+  .ebox_txt {
+    color: #666;
+    font-size: 14px;
+    h3 {
+      color: white;
+      padding: 10px 20px;
+      background-color: #333;
+      margin: 0;
+      height: 50px;
+      vertical-align: center;
+      font-size: 18px;
+      line-height: 25px;
+      font-weight: normal;
+    }
+    .ebox_small {
+      color: #333;
+      margin: 0;
+      padding: 20px 20px;
+      height: 80px;
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
+  .ebox_img {
+    height: 220px;
+    @include base_background(cover);
+  }
+  
+}
+
+
+
+@media (max-width: 509px) {
+  .chapter_brief, .divider_cap {
+    margin: 3%;
+  }
+  .chapter_brief {
+    height: auto;
+    .chapter_img { height: 200px; }
+    .chapter_img, .chapter_txt {
+      padding: 10px;
+      display: block;
+    }
+  }
+  .ebox {
+    margin: 15px 10px;
+  }
+}
+@media (min-width: 510px) and (max-width: 1199px) {
+  .chapter_brief, .divider_cap {
+    margin: 3% 6% 1% 1%;
+  }
+  .chapter_brief {
+    height: 250px;
+    .chapter_img {width: 40%;}
+    .chapter_txt {
+      width: 50%;
+    }
+    .chapter_img, .chapter_txt {
+      display: inline-block;
+      height: 100%; 
+    }
+  }
+  .ebox {
+    width: 45%;
+    margin: 15px 1%;
+  }
+}
+@media (min-width: 1200px) {
+  .chapter_brief, .divider_cap {
+    margin: 3% 4% 1% 1%;
+  }
+  .chapter_brief {
+    height: 250px;
+    .chapter_img {width: 30%;}
+    .chapter_txt {
+      width: 60%;
+    }
+    .chapter_img, .chapter_txt {
+      display: inline-block;
+      height: 100%; 
+    }
+  }
+  .ebox {
+    width: 30%;
+    margin: 15px 1%;
+  }
+}

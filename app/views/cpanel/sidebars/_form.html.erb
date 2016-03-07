@@ -1,0 +1,46 @@
+<div class="row-fluid cpanel_form">
+  <div class="span3">
+    <h3><%="Sidebar #{cap_first(params[:action])}" %></h3>
+    <%= simple_form_for([:cpanel, @sidebar]) do |f| %>
+      <%= f.input :order, :placeholder => "排列順序", :label => "Order" %>
+      <%= f.input :title, :placeholder => "could be any name", :label => "Title" %>
+      <%= f.input :comment, :placeholder => "內部註解", :label => "Comment", :as => "text", :input_html => {:rows => "3"} %>
+      <%= f.input :active, :label => "Active", :as => :radio_buttons %>
+      <%= f.input :content, :placeholder => "html語法", :label => "Content", :as => "text", :input_html => {:rows => "5"}  %>
+      <%= f.submit "儲存", :class => "btn btn-primary" %>
+      <%= link_to("取消", :back, :class => "btn") %>
+    <% end %>
+  </div>
+  
+  <div class="span9">
+    <h3>Existing Sidebars</h3>
+    <table id='sidebar_container' class="table table-striped">
+      <thead>
+        <tr class='noborder'>
+          <th style="width: 50px;">Order</th>
+          <th style="width: 150px;">Title</th>
+          <th style="width: 150px;">Comment</th>
+          <th style="width: 50px;">Active</th>
+          <th>Content</th>
+        </tr>
+      </thead>
+      <% @sidebars.each do |sidebar| %>
+        <tr>
+          <td><%= sidebar.order %></td>
+          <td><%= sidebar.title %><br>
+            <small>
+              <%= link_to "Edit", edit_cpanel_sidebar_path(sidebar) %> |
+              <%= link_to("Delete", cpanel_sidebar_path(sidebar), :method => :delete,
+                  'data-confirm' => "Are you sure to DELETE this?") if (current_user.admin? && sidebar.id)  %>
+            </small>
+          </td>
+          <td><%= sidebar.comment %></td>
+          <td><%= sidebar.active %></td>
+          <td><%= sidebar.content[0..100] %>...</td>
+        </tr>
+      <% end -%>
+    </table>
+    <%= paginate @sidebars %>    
+  </div>
+</div>
+

@@ -1,0 +1,69 @@
+<div class="box">
+  <div id="event_banner"></div>
+  <pre id="event_txt" class="event_content">
+  <div class="divider_cap"><span>取得Wired的內容</span></div>
+所有由Wired分享到OpenKnowledge開放知識平台的資料，<b style="color: red">任何人都能取用，不需經由授權步驟。</b>
+(只要是Wired頁面上有wired版權圖示<%= image_tag("#{Setting.aws_static}/wired_normal.png", :height => "30px", :style => "display: inline-block;") %>，即表示Wired已向原作者取得以Open-Knowledge方式的授權，您可以自由轉載，唯獨請保留原作者標示和文章的完整性，給原作者應有的尊重。)
+
+<b>目前提供以下的自助取用方式：</b>
+
+<hr>
+1. <b>RSS訂閱：</b>
+如果您是部落客、媒體，您可以用任何能匯入RSS的套件(例如Wordpress的"RSS Multi Importer"模組，及大部份部落格網站都有的RSS匯入功能)來取得Wired站上你喜歡的內容。Wired全站授權內容的RSS為：<b><%= link_to("http://feeds.feedburner.com/wired_asia", "http://feeds.feedburner.com/wired_asia", :target => "_blank") %></b>
+
+<hr>
+2. <b>客製您想要的RSS內容：</b>
+如果您只想訂閱Wired站上的某幾個文章種類，或是只訂閱含有某幾個關鍵字的相關文章。
+您可以從導覽列最右方登入Wired
+<%= image_tag("#{Setting.aws_static}/events/open_knowledge_api_01.png") %>
+然後從功能表選擇「我的訂閱」:
+<%= image_tag("#{Setting.aws_static}/events/open_knowledge_api_02.png") %>
+即可如下客製專屬您的Wired RSS Feed.
+<%= image_tag("#{Setting.aws_static}/events/open_knowledge_api_03.png") %>
+
+<hr>
+3. <b>使用iframe：</b>
+您亦可使用Iframe頁面來遷入Wired的最新內容到您的網站上，
+例如＜iframe src="http://<%= Setting.domain %>/iframes/suggestions"＞＜/iframe＞可嵌入如下版型
+<iframe onload="Javascript:SetWinHeight(this)" src="http://<%= Setting.domain %>/iframes/suggestions" width="700px" marginheight="0" scrolling="no" frameborder="0" align="center"></iframe>
+如果您有其他建議版型，歡迎您聯絡我們。
+
+<hr>
+4. <b>JSON字串：</b>
+如果您需要自己寫程式來後製Wired內容的呈現方式，您只要將您客製的RSS feed連結後面加上<b>.json</b>即可得到你的feed轉成的JSON字串，例如：<b><%= link_to("http://#{Setting.domain}/feed/wiredtw.json", "//#{Setting.domain}/feed/wiredtw.json", :target => "_blank") %></b>
+
+<!--//under construction
+5. <b>I-frame：</b>
+如果您是網站擁有者，想要直接嵌入Wired的最新熱門議題在您的頁面，您可以使用I-frame
+
+6. <b>JavaScript：</b>
+同上，直接嵌入Wired的最新熱門議題也可以使用JavaScript.
+
+7.-->
+<hr>
+如果您有其他原因無法使用上述的幾種方式取得Wired的內容，或是有更好的建議，歡迎您<%= link_to("聯絡我們", "mailto:marsan@wired.tw?Subject=Open-Knowledge") %>
+
+  <div class="divider_cap" ><span>推薦內容給Wired</span></div>
+假如您有值得推薦的網站、部落客、媒體等內容提供者，或是您想把自己推薦給Wired，我們也歡迎您<%= link_to("聯絡我們", "mailto:marsan@wired.tw?Subject=Open-Knowledge") %>
+    
+  </pre>
+
+  <h3><%= link_to("<<<回到Open Knowledge", event_path(:id => "open_knowledge")) %></h3>
+
+</div>
+
+<!-- auto-adjust iframe height, but not work for cross-domain iframe due to security policy. -->
+<script language="javascript">
+  function SetWinHeight(obj) { 
+    var win=obj; 
+    if (document.getElementById) { 
+      if (win && !window.opera) { 
+        if (win.contentDocument && win.contentDocument.body.offsetHeight) 
+          win.height = win.contentDocument.body.offsetHeight + 50; 
+        else if(win.Document && win.Document.body.scrollHeight) 
+          win.height = win.Document.body.scrollHeight + 50; 
+      } 
+    } 
+  } 
+</script>
+

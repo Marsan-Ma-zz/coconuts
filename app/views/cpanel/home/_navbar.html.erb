@@ -1,0 +1,17 @@
+<div class="navbar" id="cpanel_navbar">
+  <div class="navbar-inner">
+    <div class='container-fluid'>
+      <%= link_to(image_tag("#{Setting.aws_static}/wired_normal.png"), cpanel_root_path, :id => 'nav_logo', :style => "float:left; width: 110px;") %>
+      <ul class="nav pull-right">
+        <li class='nav_divider'></li>
+        <li><%= link_to("回到前台", root_path) %></li>
+        <li class='nav_divider'></li>
+        <li><%= link_to("Hi, #{current_user.name}", "#") %></li>
+        <li><%= get_avatar(current_user) %></li>
+        <li class='nav_divider'></li>
+        <li><%= link_to("登出", destroy_user_session_path, :method => :delete, :id => "sign_out" ) %></li>
+      </ul>
+    </div>
+  </div>
+</div>
+

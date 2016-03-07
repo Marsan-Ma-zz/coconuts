@@ -1,0 +1,12 @@
+<% posts.each do |i| %>
+  <div class="ebox">
+    <a href="<%= post_path(i.slug) %>" target="_blank">
+      <div class="ebox_txt">
+        <h3><%= trim(i.title, 70) %></h3>
+        <p class="ebox_small"><%= trim(i.excerpt, 120) %></p>
+        <!-- <p class="ebox_small">--- by <%= "#{i.author.name} / #{i.published_at.to_s[0..9]}" %></p> -->
+      </div> 
+      <div class="ebox_img" style="background-image: url('<%= i.thumbnail %>')"></div>
+    </a>
+  </div>
+<% end %>

@@ -1,0 +1,8 @@
+<% cache('wired_home_banner', :expires_in => 1.hour) do %>
+  <%= render "home/banner", :banners => @banners %>
+<% end %>
+
+<% cache('wired_home_cats', :expires_in => 1.hour) do %>
+  <%= render "home/categories" %>
+<% end %>
+

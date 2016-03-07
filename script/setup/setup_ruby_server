@@ -1,0 +1,6 @@
+# Install Rails & MySQL adapter
+sudo gem install rails
+sget mysql-client libmysqlclient-dev
+sudo gem install mysql2
+
+# database.yml

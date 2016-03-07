@@ -1,0 +1,13 @@
+<h3 id="techtrend_nav">
+  <div id="techtrend_title">
+    科技趨勢即時摘要 | 排序選擇
+    <%= render "techtrend/sort" %>
+  </div>
+</h3>
+<ul id="infinite_chips" class="post-list clearfix" bdata="techtrend" btype="sort" bname="<%= params[:sort] %>" blang="<%= params[:lang] %>" lastload="0">
+  <%= render @bullets %>
+</ul>
+
+<div id="loading_icon"></div>
+<div id="infinite_ending"></div>
+

@@ -1,0 +1,139 @@
+@import "base";
+
+//=========================================
+//  Header
+//=========================================
+#header_wrap {
+  background-color: mediumseagreen;
+  margin: 0 0 20px 0;
+  @include box-shadow(#555 1px 2px 5px);
+  #header_top {
+    padding-top: 50px;
+    #header_logo {
+      img {width: 100%;}
+      float: left;
+    }
+    #header_ad {float: right;}
+    #header_quote {
+      margin: 0;
+      text-align: center;
+      letter-spacing:1px;
+    }
+  }
+}
+
+//=========================================
+//  Navbar
+//=========================================
+#sticky_navbar {
+  z-index: 9999;
+  margin: 0 auto;
+  * {vertical-align: top}
+  .nav_active {background: #333;}
+  ul {margin: 0; padding: 0;}
+  li {
+    display: inline-block;
+    a {color: #fff;}
+  }
+  .pull_right {
+    float:right;
+  }
+  .nav_inner {
+    margin: 0 3%;
+  }
+  #avatar, #login_btns img {
+    height: 24px;
+    margin: 0 10px;
+    padding: 3px;
+  }
+  #login_btn {
+    height: 30px;
+    padding: 0 5px;
+    line-height: 30px;
+    margin: 5px 0;
+  }
+  #login_btns a {
+    height: 24px;
+    margin: 3px;
+    color: white;
+    vertical-align: middle;
+  }
+}
+
+.sub_inner {
+  opacity: 0;
+  height: 0;
+}
+//=========================================
+//  Search
+//=========================================
+$search_height: 24px;
+#search-form {
+  @include border-radius(5px);
+  @include box-shadow(#bbb 0 0 5px);
+  margin: 3px 10px 3px 0;
+  height: $search_height;
+  background-color: #fff;
+  overflow: hidden;
+  outline: none;
+  input {
+    height: $search_height;
+    outline: none;
+    border: none;
+  }
+}
+
+#search-button {
+  position: relative;
+  height: $search_height;
+  width: 30px;
+  font-size: 14px;
+  color: #fff;
+  text-align: center;
+  line-height: $search_height;
+  border-width: 0;
+  border-left: 1px solid #aaa;
+  background-color: #bbb;
+  @include border-right-radius(5px);
+  @include box-shadow(#ddd -4px 0px 3px -2px);
+  @include background-image(linear-gradient(color-stops(#c9c9c9 0%, #999999 100%)));
+  cursor: pointer;
+}
+
+.nav_divider {
+  display: inline-block;
+  height: 30px;
+  width: 0;
+}
+
+//=========================================
+//  NavPair (Main + Sub)
+//=========================================
+#main_nav {
+  background-color: grey; //fallback for IE
+  @include border-bottom-radius(5px);
+  @include box-shadow(rgba(0,0,0,0.3) 0 1px 2px);
+  @include background(image-url($aws_static + "/navbar_tatao.png"), linear-gradient(color-stops(#808080 0%, #707070 50%, #5e5e5e 51%, #666 100%)));
+  @include base_background();
+  .nav_divider {
+    border-right: solid 1px #929292;
+    border-left: solid 1px #5d5d5d;
+  }
+}
+
+$mnav_in: #333;
+$mnav_out: #666;
+#sub_nav {
+  height: 0;
+  opacity: 0;
+  margin: 0 1%;
+  background-color: black;  //fallback for IE
+  @include border-bottom-radius(5px);
+  @include background-image(linear-gradient(color-stops($mnav_in 0%, $mnav_out 100%)));
+  .nav_divider {
+    border-right: solid 1px $mnav_in; 
+    border-left: solid 1px $mnav_out;
+  }
+  li:hover {background: #707070;}
+}
+

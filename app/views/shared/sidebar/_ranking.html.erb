@@ -1,0 +1,27 @@
+<div class="clearfix">
+  <h3>Ranking</h3>
+  <div id="post-rank">
+    <ul class="nav">
+      <li class="nav-two"><a href="#popular" class="current">Popular</a></li>
+      <li class="nav-one"><a href="#comment">Comment</a></li>
+    </ul>
+    <div class="list-wrap">
+      <br>
+      <ul id="popular">
+        <% Post.where(:status => "published", :published_at.gt => Time.now - 6.month).desc(:count_view).limit(5).each do |i| %>
+          <li>
+            <a href="<%= post_path(i.slug) %>">
+              <%= i.title %>
+              <p class="ranking_desc"><%= i.count_view %> views · <%= post_date(i.published_at) %></p>
+            </a>
+          </li>
+        <% end %>
+      </ul>
+      <ul id="comment" class="hide">
+        <div id="popularthreads" class="dsq-widget">
+          <script type="text/javascript" src="http://wiredtw.disqus.com/popular_threads_widget.js?num_items=5"></script>
+        </div>
+      </ul>
+    </div>
+  </div>
+</div>

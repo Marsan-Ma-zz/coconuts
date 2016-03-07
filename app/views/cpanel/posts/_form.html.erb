@@ -1,0 +1,169 @@
+<!-- NicEdit: Light weight html editor. http://nicedit.com/index.php (TinyMCE too heavy, abandom.) -->
+<script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js"></script> 
+<script type="text/javascript">
+  //<![CDATA[
+  //  bkLib.onDomLoaded(function() {
+  //    new nicEditor({fullPanel : true}).panelInstance('post_content');
+  //  });
+  //]]>
+</script>
+
+<%= simple_nested_form_for([:cpanel, @post]) do |f| %>
+<div class="accordion cpanel_form cpanel_fullform">
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" href="#collapse_1">
+        <h4>發文設定</h4>
+      </a>
+    </div>
+    <div id="collapse_1" class="accordion-body collapse in">
+      <div class="accordion-inner">
+        <%= f.input :slug, :placeholder => "僅可包含a-z與底線", :label => "網址(slug)" %>
+        <%= f.input :title, :placeholder => "文章標題", :label => "標題" %>
+        <%= f.input :thumbnail, :placeholder => "縮圖連結", :label => "縮圖" %>
+        <%= f.input :excerpt, :placeholder => "CSS訂閱的摘要，並作SEO用", :label => "摘要", :as => "text", :input_html => {:rows => "3"} %>
+        <%= f.input :social_excerpt_common, :placeholder => "一般社群摘要", :label => "一般社群", :as=>"text",:input_html => {:rows => "3"} %>
+        <%= f.input :social_excerpt_geek, :placeholder => "專業社群摘要", :label => "專業社群", :as => "text",:input_html => {:rows => "3"} %>
+        <%= f.association :author, :collection => @post.editors.push(current_user).uniq, include_blank: false, 
+                          :label => "作者", :hint => " (編輯過這篇文章的人才能選為作者)" %>
+        <%= f.input :status, :collection => post_status_options(current_user), :label => "狀態", :as => "select", :include_blank => false %>
+        <div id="post_published_wrap">
+          <label class="select optional" for="post_published_at">發佈時間</label>
+          <%= f.datetime_select :published_at, :value => @post.published_at, :id => "datetime_select" %>
+        </div>
+        <hr>
+        <label class="select optional" for="post_status">Category</label>
+        <div class="check_box_sea" style="height: 50px;">
+          <%= f.association :categories, :collection => Category.asc(:name), :label => false,:as => "check_boxes" %>
+        </div>
+        <hr>
+        <label class="select optional" for="post_status">Tags</label>
+        <div class="check_box_sea" style="height: 150px;">
+          <%= f.association :tags, :collection => @tags_sig, :label => false, :as => "check_boxes" %>
+        </div>
+        <input name="tag_extra" placeholder="New Tags separate with space.(Ex: apple banana car)" type="text" style="width: 80%">
+        <span id="hot_tag_ids" ids="<%= @tags_hot %>"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" href="#collapse_2">
+        <h4>文章內容</h4>
+      </a>
+    </div>
+    <div id="collapse_2" class="accordion-body collapse in">
+      <div class="accordion-inner">
+        <%= f.input :format, :collection => ["normal", "full", "album", "slider"], :label => "版面格式", :as => "select", :include_blank => false %>
+        <%= f.input :content, :placeholder => "HTML格式的文章內容", :label => false, :id => "post_content", :as => "text" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" href="#collapse_3">
+        <h4>版權註記</h4>
+      </a>
+    </div>
+    <div id="collapse_3" class="accordion-body collapse in">
+      <div class="accordion-inner">
+        <div id="cites">
+          <%= f.simple_fields_for :cites do |c| %>
+            <%= c.input :source, :collection => ["from", "edited", "translated", "author", "photo"], :include_blank => false %>
+            <%= c.input :name, :placeholder => "作者" %>
+            <%= c.input :url, :placeholder => "網址" %>
+            <% c.link_to_remove '移除', :class => "btn btn-mini btn-primary" %>
+          <% end %>
+          <%= f.link_to_add "Add Cite", :cites, :data => { :target => "#cites" }, :class => "btn btn-mini btn-info" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" href="#collapse_4">
+        <h4>照片集</h4>
+      </a>
+    </div>
+    <div id="collapse_4" class="accordion-body collapse in">
+      <div class="accordion-inner">
+        <div id="galleries">
+          <%= f.simple_fields_for :galleries do |c| %>
+            <%= c.input :image, :placeholder => "圖片網址" %>
+          <% end %>
+          <%= f.link_to_add "Add Image", :galleries, :data => { :target => "#galleries" }, :class => "btn btn-mini btn-info" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" href="#collapse_5">
+        <h4>轉載設定</h4>
+      </a>
+    </div>
+    <div id="collapse_5" class="accordion-body collapse in">
+      <div class="accordion-inner">
+        <%= f.input :copyright, :label => "版權", :as => :radio_buttons, :hint => " (是否擁有轉載權)" %>
+        <%= f.input :post2social, :label => "轉發社群網站", :as => :radio_buttons %>
+        <%= f.input :post2china, :label => "轉發中國社群", :as => :radio_buttons %>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" href="#collapse_6">
+        <h4>版本比較</h4>
+      </a>
+    </div>
+    <div id="collapse_6" class="accordion-body collapse in">
+      <div class="accordion-inner">
+        <div class="diff" id="diff_legend">
+          <ul>
+            <li>顏色示意:</li> 
+            <li class="del"><del>前版<strong>刪減處</strong></del></li> | 
+            <li class="ins"><ins>此版<strong>增加處</strong></ins></li>
+          </ul>
+        </div>
+        <table>
+          <% @post.post_versions.desc(:updated_at)[0..2].each do |i| %>
+            <tr style="border: 1px solid #000;">
+              <td><b>
+                <%= i.updated_at.to_s[0..15] %> |
+                <%= i.author.name if i.author %> | 
+                <%= i.title %> |
+                <%= link_to("與最新版本比較", cpanel_post_path(@post, :version => i.id), :target => "_blank") %> | 
+                <%= link_to("回復為此版", edit_cpanel_post_path(@post, :version => i.id), 'data-confirm' => "確定將文章回復為此版本？") %>
+              </b></td>
+            </tr>
+            <tr>
+              <td>此版更動處：<%= raw(i.diff) %></td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <%= f.submit "儲存", :class => "btn btn-primary", :id => "submit_post_content" %>
+    <%= link_to("取消", :back, :class => "btn") %>
+    <%= link_to("預覽", post_path(:slug => @post.slug), :class => "btn btn-info", :target => "_blank") if @post.slug %>
+    <%= link_to("刪除", cpanel_post_path(@post), :method => :delete, :class => "btn btn-danger pull-right",
+                'data-confirm' => "Are you sure to DELETE this post?") if (current_user.own_post(@post) && @post.id)  %>
+  </div>
+
+</div>
+<% end %>
+
+<style>
+  <%= Diffy::CSS %>
+  .diff del strong{font-weight:bold;background:#faa;}
+  .diff ins strong{font-weight:bold;background:#7f7;}
+  #diff_legend * {display: inline-block;}
+</style>

@@ -1,0 +1,14 @@
+<ul class="post-list clearfix album">
+  <li class="current album_chip" img="<%= post.galleries.first.image %>">
+    <a href="#">
+      <div class="post-cover" style="background-image: url('<%= post.galleries.first.image %>')"></div>
+    </a>
+  </li>
+  <% post.galleries[1..-1].each do |g| %>
+    <li class="album_chip" img="<%= g.image %>">
+      <a href="#">
+        <div class="post-cover" style="background-image: url('<%= g.image %>')"></div>
+      </a>
+    </li>
+  <% end %>
+</ul>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= "#{Setting.app_name}/Control Panel" %></title>
+    <%= stylesheet_link_tag "cpanel" %>
+    <%= csrf_meta_tag %>
+  </head>
+  <body>
+    <!-- header -->
+    <%= render 'cpanel/home/navbar' %>
+    <!-- body -->
+    <div class='container-fluid'>
+      <div class='row-fluid'>
+        <div class='span2'><%= render "cpanel/home/sidebar" %></div>
+        <div class='span10' id="cpanel_main">
+            <%= render 'layouts/messages' %>
+            <%= yield  %>
+        </div>
+      </div>
+    </div>
+
+    <!-- footer -->
+    <%= javascript_include_tag "cpanel" %>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+<header>
+  <a href="<%= posts_path(:category => post.get_cat) %>" class="cate <%= post_css_class(post.get_cat) %>" >
+    <mark><%= post.get_cat %></mark>
+  </a>
+  <h4><%= post.title %></h4>
+  <div>
+    <address class="author">
+      <%= "By " + post_author(post) %>
+      <% if post.copyright %>
+      , <%= link_to("WIRED.tw", post_url(post)) %>
+      <% end %>
+    </address> |  
+    <time pubdate datetime="<%= post.published_at %>"><%= post_date(post.published_at) %></time>
+    <div id="social-share">
+      <%= render "posts/like_btns" %>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+</header>

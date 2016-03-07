@@ -1,0 +1,22 @@
+<div class="row-fluid cpanel_full_form">
+  <div class="span12">
+    <h3>Asks List</h3>
+    <table class="table table-striped">
+      <thead>
+        <tr class='noborder'>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Time</th>
+        </tr>
+        <% @asks.each do |i| %>
+          <tr>
+            <td><%= i.name %></td>
+            <td><%= i.description %></td>
+            <td><%= i.created_at.to_s[0..-7] %></td>
+          </tr>
+        <% end %>
+      </thead>
+    </table>
+  </div>
+</div>
+

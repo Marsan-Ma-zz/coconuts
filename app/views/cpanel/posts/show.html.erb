@@ -1,0 +1,17 @@
+<div class="diff" id="diff_legend">
+  <ul>
+    <li>顏色示意:</li>
+    <li class="del"><del>前版<strong>刪減處</strong></del></li> |
+    <li class="ins"><ins>此版<strong>增加處</strong></ins></li>
+  </ul>
+</div>
+
+<%= raw(Diffy::Diff.new(@post.content, @ver.content).to_s(:html)) %>
+
+<style>
+  <%= Diffy::CSS %>
+  .diff del strong{font-weight:bold;background:#faa;}
+  .diff ins strong{font-weight:bold;background:#7f7;}
+  #diff_legend * {display: inline-block;}
+</style>
+

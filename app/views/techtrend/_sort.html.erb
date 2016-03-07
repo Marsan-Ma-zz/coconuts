@@ -1,0 +1,22 @@
+<select onchange="window.open(this.value,'_self');">
+  <optgroup label="中文媒體">
+    <%= sort_select("中文最新", "latest", params) %>
+    <%= sort_select("週排名", "popular_week", params) %>
+    <%= sort_select("月排名", "popular_month", params) %>
+    <% if user_signed_in? %>
+      <%= sort_select("我的收藏", "favorite", params) %>
+    <% else %>
+      <option value="javascript:login_first();")>我的收藏</option>
+    <% end %>
+  </optgroup>
+  <optgroup label="英文媒體">
+    <%= sort_select("英文最新", "latest", params, "en") %>
+    <%= sort_select("週排名", "popular_week", params, "en") %>
+    <%= sort_select("月排名", "popular_month", params, "en") %>
+    <% if user_signed_in? %>
+      <%= sort_select("我的收藏", "favorite", params, "en") %>
+    <% else %>
+      <option value="javascript:login_first();")>我的收藏</option>
+    <% end %>
+  </optgroup>
+</select>

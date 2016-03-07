@@ -1,0 +1,17 @@
+<div class="home_cat">
+  <a href="<%= item["link"] %>">
+    <div class="cat_ribbon"><%= item["name"] %></div>
+    <% if item["mtype"] == "iframe" %>
+      <iframe class="cat_img" src="<%= item["banner"] %>" frameborder="0" scrolling="no" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+    <% else %>
+      <div class="cat_img" style="background-image: url('<%= item["banner"] %>')"></div>
+    <% end %>
+    <div>
+      <h3><%= trim(item["title"], 45) %></h3>
+      <small><%= trim(item["excerpt"], 180) %></small>
+      <p class="author">--- <%= "#{item["name"]} / #{item["author"]} / #{item["published"].to_s[0..9]}" %></p>
+    </div>
+  </a>
+</div>
+<hr class="mobile_divider">
+

@@ -1,0 +1,39 @@
+@import "base";
+
+.sponsor{
+  vertical-align: top;
+  margin:2px;
+  display:inline-block;
+  .sponsorFlip{
+    border:1px solid #ddd;  
+    @include set_background($aws_static + "/flipwall/background.jpg", 100%, 100%);
+    &:hover{
+      border:1px solid #999;
+      @include box-shadow(#999 0 0 30px inset);
+    }
+    img{
+      width:80%;
+      height:80%;
+      display: block;
+      margin: 10% auto;
+    }
+    .sponsorDescription{
+      position:relative;
+      color:#666;
+      font-size:10px;
+      font-style:italic;
+      text-align:center;
+    }
+    .sponsorURL{
+      position:relative;
+      color:#0196e3;
+      font-size:10px;
+      font-weight:bold;
+      text-align:center;
+    }
+  }
+  .sponsorData{
+    @include set_background($aws_static + "/flipwall/background.jpg", 100%, 100%);
+    display:none;
+  }
+}

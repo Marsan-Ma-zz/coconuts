@@ -1,0 +1,11 @@
+<li>
+  <div class="post excerpt">
+  <a href="<%= posts_path(:user => insider.id ) %>"> 
+    <div class="post-cover" style="background-image: url('<%= "#{Setting.aws_static}/insider/#{insider.name.downcase}.jpg" %>')">
+      <div class="tri"></div>
+    </div>
+    <h4 class="insider_name"><%= insider.name %></h4>
+    <p><%= insider.tagline %></p>
+  </a></div>
+</li>
+

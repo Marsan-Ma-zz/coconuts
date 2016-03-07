@@ -1,0 +1,32 @@
+<div class="row-fluid cpanel_form">
+  <div class="span12">
+    <h3>Existing Feeds</h3>
+    <table id='feed_container' class="table table-striped">
+      <thead>
+        <tr class='noborder'>
+          <td>Title</td>
+          <td>Slug</td>
+          <td>Comment</td>
+        </tr>
+      </thead>
+      <% @feeds.each do |feed| %>
+        <tr>
+          <td><%= feed.title %></td>
+          <td>
+            <%= feed.slug %><br>
+            <small>
+              <%= link_to("Show", "/rss/#{feed.slug}", :target => "_blank") %> |
+              <%= link_to("Edit", edit_cpanel_feed_path(feed)) %> |
+              <%= link_to("Delete", cpanel_feed_path(feed), :method => :delete,
+                  'data-confirm' => "Are you sure to DELETE this feed?") if (current_user.admin? && feed.id)  %>
+            </small>
+          </td>
+          <td><%= feed.comment %></td>
+        </tr>
+      <% end %>
+    </table>
+    <%= paginate @feeds %>
+  </div>
+</div>
+
+<%= link_to("New Feed", new_cpanel_feed_path, :class => "btn btn-primary") %>

@@ -1,0 +1,354 @@
+
+/*--------header------------*/
+  #gq_header{background-color: #000;}
+
+  .GQ_Logo{
+  	background: url(image-path('http://www.gq.com.tw/assets/images/css-sprites.png')) no-repeat;
+  	height: 120px;
+  	text-indent: -9999px;
+  	width: 243px;
+  	z-index: 3333;
+  	margin: 0 auto;
+  }
+  .GQ_Logo a{
+    display: block;
+    height: 100%;
+  }
+  .headerContainer{
+  	width: 970px;
+    margin: 0 auto;
+    position: relative;
+    padding: 15px 0;
+  }
+  .slogan{text-transform: uppercase;font-family: 'Open Sans', sans-serif;color:#fff;
+  }
+  .slogan-1{position: absolute;top: 70px;left: 265px;
+  }
+  .slogan-2{position: absolute;top: 70px;right: 290px;}
+  .subscribe{
+  	width: 215px; height: 140px; 
+  	position: absolute;
+  	top: 10px;
+  	right: 0;
+    background: url(image-path('http://www.gq.com.tw/assets/images/css-sprites.png')) no-repeat 0 -613px;
+  }
+  .subscribe a{display: block;height: 100%;}
+  .social_icon{
+  	position: absolute;
+  	bottom: 10px;
+  	left: 0;
+  	font-size: 18px;
+  }
+  .social_icon .icon{margin-right: 10px;}
+  .social_icon a{color: #666;}
+  .social_icon a:hover{color: #fff;}
+
+/*--------common setting------------*/
+  
+  .sprite{background: url(image-path('http://www.gq.com.tw/assets/images/css-sprites.png')) no-repeat;}
+
+  .clearAll{clear:both;}
+
+  .sprite-cn{ background-position: 0 0; width: 254px; height: 20px; } 
+  .sprite-facebook{ background-position: 0 -360px; width: 39px; height: 73px; } 
+  .sprite-logo{ background-position: 0 -463px; width: 243px; height: 120px; } 
+  .sprite-subscribe{ background-position: 0 -613px; width: 215px; height: 140px; } 
+  
+  .sprite-vogue{ background-position: 0 -826px; width: 98px; height: 26px; } 
+  .sprite-wired{ background-position: 0 -882px; width: 120px; height: 24px; } 
+ 
+
+
+/*--------dropdown css------------*/
+
+  .menuHolder{
+    width: auto;
+    background-color: #222;
+    height: 45px;
+  }
+  #cssmenu {
+    border: none;
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
+    font-size: 14px;
+    font-weight: bold;
+    width: 1000px;
+    margin: 0 auto;
+    position: relative;
+  }
+  #cssmenu ul {
+    background: #222;
+    height: 45px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  #cssmenu li {
+    float: left;
+    padding: 0px;
+  }
+  #cssmenu li a {
+    display: block;
+    font-weight: normal;
+    margin: 0px;
+    padding: 0px 15px;
+    text-align: center;
+    text-decoration: none;
+    line-height: 45px;
+    transition: background .25s ease-in-out;
+    -moz-transition: background .25s ease-in-out;
+    -webkit-transition: background .25s ease-in-out;
+  }
+  #cssmenu > ul > li > a {
+    color: #fff;
+  }
+  #cssmenu ul ul a {
+    color: #cccccc;
+  }
+  #cssmenu li > a:hover,
+  #cssmenu ul li:hover > a {
+    background: rgba(237, 28, 35,0.6);
+    color: #FFFFFF;
+    text-decoration: none;
+  }
+  #cssmenu li ul {
+    background: rgba(15, 15, 15,0.95);
+    display: none;
+    height: auto;
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    position: absolute;
+    width: 135px;
+    z-index: 200;
+
+  }
+  #cssmenu li:hover ul {
+    display: block;
+  }
+  #cssmenu li li {
+    
+    display: block;
+    float: none;
+    margin: 0px;
+    padding: 0px;
+    
+  }
+  #cssmenu li:hover li a {
+    background: none;
+  }
+  #cssmenu li ul a {
+    background: rgba(35, 35, 35,0.6);
+    display: block;
+    height: 35px;
+    font-size: 13px;
+    line-height: 35px;
+    font-style: normal;
+    margin: 0px;
+    padding: 0px 10px 0px 15px;
+    text-align: left;
+  }
+  #cssmenu li ul a:hover,
+  #cssmenu li ul li:hover > a {
+   background: rgba(237, 28, 35,0.6);
+    border: 0px;
+    color: #ffffff;
+    text-decoration: none;
+  }
+  #cssmenu p {
+    clear: left;
+  }
+  #cssmenu li .focus{
+    color: #fd0;
+  }
+  /*login section*/
+
+  .memberSection{
+    position: absolute;
+    right: 30px;
+    top: 12px;
+    color: #fff;
+  }
+  .memberSection .iconSize{
+    font-size: 18px;
+    
+  }
+  .memberSection a{
+    color: #fff;
+    font-size: 13px;
+  }
+  .member_icon{
+    padding: 0 5px;
+  }
+  .member_icon a{
+    display: block;
+  }
+
+/*--------FOOTER------------*/
+  .siteFooterWrapper{
+    background-color: #000;
+  }
+  .siteFooterContent{
+    background-color: #222;
+  }
+  .serviceLinks{
+    height: 40px;
+    color: #fff;
+    line-height: 40px;
+    display: table;
+    margin: 0 auto;
+  }
+  .serviceLinks a{
+    color: #fff;
+    font-size: 15px;
+  }
+  .serviceLinks li{
+    padding-right: 20px;
+  }
+  .magazineSubscribe{
+    background-position:  0 -50px;;
+    width: 490px; height: 280px;
+    float: left;
+  }
+  .topContent{
+    padding: 40px 10px 0 45px;
+    margin: 0 auto;
+    width: 1000px;
+  }
+  .triangle-grey{ width: 26px;
+    height: 13px;
+    background-position: 0 -783px;
+    display: block;
+    margin: 0 auto;
+  }
+  .gqLogo{
+    margin-left: 17px;
+    background-position:  0 -936px; width: 226px; height: 53px;
+  }
+  .worldwide{
+    padding: 5px 0 5px 5px;
+    color: #fff;
+  }
+  .country-links a{
+    color: #fff;
+  }
+  .linkSection{
+    float: left;
+    width: 266px;
+    border-right: 1px solid #333333;
+  }
+  .gq_international{
+    padding-left: 15px;
+    width: 275px;
+    padding-top: 10px;
+  }
+ .gq_international li:first-child{
+    float: none;
+    width: auto;
+    color: #FFF;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: block;
+    text-transform: uppercase;
+  }
+  .gq_international li{
+    display: inline-block;
+    vertical-align: top;
+    width: 29%;
+    text-align: left;
+    font-size: 11px;
+    line-height: 24px;
+  }
+  .gq_international a{
+    color: #fff;
+  }
+  .linkSocail{
+    float: left;
+    padding-left: 15px;
+  }
+  .wired_international{
+    width: 160px;
+  }
+  .wired_international li:first-child {float:none}
+  .wired_international li:first-child{
+    width: auto;
+    color: #FFF;
+    padding-bottom: 10px;
+    display: block;
+    text-transform: uppercase;
+  }
+  .wired_international li{
+    display: inline-block;
+    vertical-align: top;
+    width: 44%;
+    text-align: left;
+    font-size: 11px;
+    line-height: 24px;
+  }
+  .wired_international a{
+    color: #fff;
+  }
+  .socialFacebook{
+    background-position: 0 -338px;
+    height: 80px;
+    padding-left: 60px;
+    font-size: 15px;
+    color: #fff;
+    font-weight: bold;
+    text-align: left;
+    padding-top: 20px;
+  }
+  .socialFacebook p{
+    margin-top: 15px;
+    font-family: MyMainChinese,Helvetica,Arial,FreeSans,"sans-serif";
+  } 
+  .socialFacebook strong{
+    font-size: 20px;
+  }
+  .socialFacebook span{
+    display: block;
+    font-size: 18px;
+    margin-top: 15px;
+  }
+  .socailButton{
+    padding-top: 20px;
+    width: 50px;
+  }
+  .condenastDigital{
+     background-position: 0 0; 
+     width: 254px; height: 20px;
+     margin-top: 20px;
+  }
+  .condenastDigital a{
+    display: block;height: 100%;
+  }
+  .leftSection{
+    float: left;
+  }
+  .leftSection .copyRight{
+    color: #fff;
+    padding-top: 10px;
+    font-size: 11px;
+  }
+  .rightSection{
+    padding-top: 20px;
+    float: right;
+  }
+  .rightSection li{
+    float: left;
+    margin-left: 25px;
+  }
+  .rightSection li:first-child{
+    float: left;
+    color: #fff;
+    line-height: 30px;
+  }
+  .rightSection a{
+    display: block;height: 100%;color: #fff;
+  }
+  .copyRightWrapper{
+    width: 1000px;
+    margin: 0 auto;
+    height: 105px;
+  }

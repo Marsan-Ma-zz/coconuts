@@ -1,0 +1,41 @@
+<div class="row-fluid cpanel_form">
+  <div class="span3">
+    <h3><%="Note #{cap_first(params[:action])}" %></h3>
+    <%= simple_form_for([:cpanel, @note]) do |f| %>
+      <%= f.input :key, :label => "設定名(key)" %>
+      <%= f.input :value, :label => "設定值(value)", :as => "text", :input_html => {:rows => "3"} %>
+      <%= f.input :description, :label => "說明", :as => "text", :input_html => {:rows => "3"} %>
+    
+      <%= f.submit "儲存", :class => "btn btn-primary" %>
+      <%= link_to("取消", :back, :class => "btn") %>
+    <% end %>
+  </div>
+  
+  <div class="span9">
+    <h3>Existing Notes</h3>
+    <table id='note_container' class="table table-striped">
+      <thead>
+        <tr class='noborder'>
+          <th>Key</th>
+          <th>Value</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <% @notes.each do |note| %>
+        <tr>
+          <td><%= note.key %><br>
+            <small>
+              <%= link_to "Edit", edit_cpanel_note_path(note) %> |
+              <%= link_to("Delete", cpanel_note_path(note), :method => :delete,
+                  'data-confirm' => "Are you sure to DELETE this note?") if (current_user.admin? && note.id)  %>
+            </small>
+          </td>
+          <td><%= note.value %></td>
+          <td><%= note.description %></td>
+        </tr>
+      <% end -%>
+    </table>
+    <%= paginate @notes %>    
+  </div>
+</div>
+

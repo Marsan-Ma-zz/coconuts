@@ -1,0 +1,12 @@
+<div><h3>GQ Recommended</h3>
+  <p><span id="gq_ad_300x250"></span></p>
+</div>
+
+
+<div style="padding-bottom: 0"><h3>Recent Events</h3>
+  <p>
+    <% Sidebar.where(:active => true).each do |i| %>
+      <%= raw(i.content) %>
+    <% end %>
+  </p>
+</div>

@@ -1,0 +1,40 @@
+<div class="wrapimg">
+  <% if (post.format == "album") %>
+    <% banner = post.galleries.first %>
+    <%= image_tag(banner.image, :id => "post_thumb") if banner.image %>  
+    <% if banner.title %>
+      <p><%= banner.title %></p>
+    <% end %>
+  <% elsif ["normal", "full"].include?(post.format) %>
+    <% if not post.content[0..30].include?("iframe") %>
+      <% cont = Nokogiri::HTML(post.content) %>
+      <% thumb = cont.css("img").first.attr("src") rescue Setting.post_dummy_thumbnail %>
+      <%= image_tag(thumb, :id => "post_thumb") %>
+      <% title = cont.css("img").first.attr("alt") rescue "" %>
+      <%= content_tag(:p, title) if not title.blank? %>
+    <% end %>
+  <% end %>
+</div>
+
+<section>
+  <% if (post.format == "album") %>
+    <%= render "posts/show/album", :post => post %>
+  <% elsif (post.format == "slider") %>
+    <%= render "posts/show/slider", :post => post %>
+  <% end %>
+  <div id="post_body"><%= raw post.get_post_format %></div>
+  <%= post_original(post) %>
+  <%= render "posts/cites", :cites => post.cites %>
+  <br>
+  <div id="social-share-button">
+    <h4>分享這篇文章</h4>
+    <%= social_share_button_tag(post.title, :url => "http://#{Setting.domain}#{post_path(post.slug)}") %>
+  </div>
+  <div class="clearfix"></div>
+</section>
+
+<h3>Wired為您推薦</h3>
+<section><%= render "posts/related", :related_posts => related_posts(post) %></section>
+
+<h3>Comments</h3>
+<section><%= render "posts/disqus" %></section>

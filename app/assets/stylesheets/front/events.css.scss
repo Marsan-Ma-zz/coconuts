@@ -1,0 +1,67 @@
+@import "base";
+
+#event_maintxt {
+  font-size: 16px; 
+  //text-align: center;
+  h2 {margin: 5px;}
+  h3 {margin: 0;}
+}
+
+#event_txt {
+  font-size: 16px; 
+  h2 {margin: 5px;}
+}
+
+#event_sponsors {
+  text-align:center;
+}
+
+#event_banner {
+  @include set_background($aws_static + "/events/open-knowledge-header.jpg");
+  display: block;
+  vertical-align: center;
+  @media (max-width: 509px) {min-height: 100px; margin: 10px;}
+  @media (min-width: 510px) and (max-width: 1199px) {min-height: 200px; margin: 20px;}
+  @media (min-width: 1200px) {min-height: 300px; margin: 30px;}
+}
+
+.event_content {
+  margin: 0 50px;
+  @media (max-width: 509px) {margin: 0 10px;}
+  @media (min-width: 510px) and (max-width: 1199px) {margin: 0 30px;}
+  @media (min-width: 1200px) {margin: 0 50px;}
+}
+
+#ok_main {
+  font-size: 1.2em;
+  @media (max-width: 509px) {.divider_cap { margin: 0 ;}}
+  @media (min-width: 510px) and (max-width: 1199px) {.divider_cap { margin: 0 10px;}}
+  @media (min-width: 1200px) {.divider_cap { margin: 0 30px;}}
+}
+
+#ok_content {
+  td {
+    padding: 0px 10px;
+  }
+  small {
+    color: #646464;
+  }
+  #ok_content_note {
+    font-size: 1.5em;
+    h2 {
+      margin-bottom: 20px 0;
+    }
+  }
+}
+
+#ok_join {
+  @include border-radius(5px);
+  background-color: #a0dae8;
+  padding: 10px 20px 0 20px;
+  margin-top: 30px;
+  #ok_join_dec {
+    position: relative;
+    float: right;
+    top: 0;
+  }
+}

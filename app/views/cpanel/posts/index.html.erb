@@ -1,0 +1,66 @@
+<!-- Filter -->
+<form action='/cpanel/posts' id="search_posts" method='get' target='_top'>
+  <input name="contains" placeholder="輸入欲搜尋的關鍵字" value="<%= params[:contains] %>" type="text">
+  <select name="status">
+    <% pcnt = Note.where(:key => "post_status_counter").first.value %>
+    <option value=''>All articles</option>
+    <% post_status_array.each do |i| %>
+      <option value="<%= i.downcase %>" class="<%= i.downcase %>"><%= i %></option>
+    <% end %>
+  </select>
+  <select name="author">
+    <option value='0'>All Authors</option>
+    <% User.asc(:name).each do |i| %>
+      <option value='<%= i.id %>'><%= i.name %></option>
+    <% end %>
+  </select>
+  <input type='submit' value="Filter" class='btn' style="margin-bottom: 10px;"/>
+</form>
+
+<!-- All Posts -->
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <td colspan=5>
+        <%= link_to("All (#{pcnt["All"]})", cpanel_posts_path) %> |
+        <% post_status_array.each do |i| %>
+          <%= link_to("#{i} (#{pcnt[i]})", cpanel_posts_path(:status => i.downcase), :class => i.downcase) %> |
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <th style="width: 40%;" class='first'>Title</th>
+      <th style="width: 10%;">Categories</th>
+      <th style="width: 20%;">Author</th>
+      <th style="width: 20%;">Schedule</th>
+      <th style="width: 10%;" class='last'>Feedback</th>
+    </tr>    
+  </thead>
+  <tbody id="articleList">
+    <% for post in @posts %>
+      <tr>
+        <td class='first'><%= post.title %><br>
+          <small>
+            <%= link_to("Show", post_path(post.slug), :target => "_blank") %> | 
+            <%= link_to("Edit", edit_cpanel_post_path(post)) if current_user.own_post(post) %> | 
+            <%= link_to("Delete", cpanel_post_path(post), :method => :delete, 
+                'data-confirm' => "Are you sure to DELETE this post?") if current_user.own_post(post) %>
+          </small>
+        </td>
+        <td><%= post.categories.map{|i| i.name }.join(',') %></td>
+        <td><%= post.author.name if post.author %></td>
+        <td>
+          <%= post.published_at.to_s[0..-7].gsub('T', ' ') %><br>
+          <%= post_status(post) %>
+        </td>
+        <td class='last'>
+          <%= "#{post.count_view} viewed" %><br>
+          <%= link_to("", "#{post_url(post.slug)}#disqus_thread", :target => "_blank") %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @posts %>
+
+<%= render "cpanel/posts/disqus_script" %>

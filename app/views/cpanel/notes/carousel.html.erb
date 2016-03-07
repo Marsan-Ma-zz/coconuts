@@ -1,0 +1,25 @@
+<div class="row-fluid cpanel_full_form">
+  <div class="span12">
+    <h3>HomePage Carousel</h3>
+    <table class="table table-striped">
+      <thead>
+        <tr class='noborder'>
+          <th>Current</th>
+          <th>Post</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <% Note.where(:key => /home_carousel/).each do |i| %>
+        <%= simple_form_for([:cpanel, i]) do |f| %>
+          <tr>
+            <% post = Post.where(:id => i.value).first %>
+            <td><%= post.title if post %></td>
+            <td><%= f.input :value, :collection => @post_candidates, :label => false, :as => "select" %></td>
+            <td><%= f.submit "變更", :class => "btn btn-primary" %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </table>
+
+</div>
+

@@ -1,0 +1,92 @@
+<ul id="topnav">
+    <a href="<%= root_path %>"><h1 class="title"><span>Wired</span></h1></a>
+  <li>
+    <%= link_to "Tech", posts_path(:category => "technology") %>
+    <span>
+      <%= link_to "ALL TECH", posts_path(:category => "technology") %>
+      <%= link_to "GOOGLE", posts_path(:tag => "google") %>
+      <%= link_to "GADGETS", posts_path(:tag => "gadgets") %>
+    </span>
+  </li>
+  <li>
+    <%= link_to "Business", posts_path(:category => "business") %>
+    <span>
+      <%= link_to "ALL BUSINESS", posts_path(:category => "business") %>
+      <%= link_to "MEDIA", posts_path(:tag => "media") %>
+      <%= link_to "STARTUPS", posts_path(:tag => "startup") %>
+    </span>
+  </li>
+  <li>
+    <%= link_to "Science", posts_path(:category => "science") %>
+    <span>
+      <%= link_to "ALL SCIENCE", posts_path(:category => "science") %>
+      <%= link_to "SCIENCE BLOGS", posts_path(:tag => "science_blogs") %>
+    </span>
+  </li>
+  <li>
+    <%= link_to "People", posts_path(:category => "people") %>
+    <span>
+      <%= link_to "OPINION", posts_path(:tag => "opinion") %>
+      <%= link_to "INNOVATION", posts_path(:tag => "innovation") %>
+    </span>
+  </li>
+  <li>
+    <%= link_to "Insider", insiders_path %>
+    <span>
+      <%= link_to "Insider", insiders_path %>
+    </span>
+  </li>
+  <li>
+    <%= link_to "Entertainment", posts_path(:category => "entertainment") %>
+    <span>
+      <%= link_to "ALL ENTERTAINMENT", posts_path(:category => "entertainment") %>
+      <%= link_to "GAMING", posts_path(:tag => "gaming") %>
+      <%= link_to "FILM", posts_path(:tag => "film") %>
+      <%= link_to "MUSIC", posts_path(:tag => "music") %>
+    </span>
+  </li>
+  <li>
+    <%= link_to "Design", posts_path(:category => "design") %>
+    <span>
+      <%= link_to "GLOBAL", posts_path(:tag => "global_design") %>
+      <%= link_to "LOCAL", posts_path(:tag => "local_design") %>
+    </span>
+  </li>
+  <li>
+    <%= link_to "Events", "" %>
+    <span>
+      <%= link_to "EVENTS", event_path(:id => "2013_spring_forum") %>
+      <%= link_to "BIG DATA", event_path(:id => "big_data_magzine") %>
+      <%= link_to "FEATURES", features_path %>
+    </span>
+  </li>
+  <li class="rt-nav">
+    <a href="#" class="search-func">Search</a>
+    <span>
+      <form action='/search' method='get' target='_top' id="searchForm">
+        <fieldset>
+            <div class="input">
+            <input type="text" name="q" id="s" value="Enter your search" />
+          </div>
+            <input type="submit" id="searchSubmit" value="" />
+        </fieldset>
+      </form>
+    </span>
+  </li>
+  <li class="rt-nav"><%= link_to("RSS", "http://feeds.feedburner.com/wired/tw", :class => "rss-func", :target => "_blank") %></li>
+  <li class="rt-nav">
+    <%= link_to("", "", :id => "login_btn") %>
+    <span>
+      <% if user_signed_in? %>
+        <%= link_to("Hi, #{current_user.name}", "") %>
+        <%= link_to(image_tag(current_user.avatar.normal, :size => "35x35", :id => "avatar")) %> |
+        <%= link_to("Cpan", cpanel_root_path) if current_user.admin? %> |
+        <%= link_to("Logout", "/logout") %>
+      <% else %>
+        <%= link_to("使用Facebook登入", user_omniauth_authorize_path(:facebook), :class => "btn btn-mini btn-primary") %>
+        <%= link_to("使用Google登入", user_omniauth_authorize_path(:google), :class => "btn btn-mini btn-danger") %>
+        <%= link_to("使用Twitter登入", user_omniauth_authorize_path(:twitter), :class => "btn btn-mini btn-info") %>
+      <% end %>
+    </span>
+  </li>
+</ul>

@@ -1,0 +1,9 @@
+<div class="chapter_brief" style="display: block;">
+  <a href="<%= posts_path(:user => user.id) %>"> 
+	<div class="chapter_img" style="background-image: url('<%= user.avatar.url %>')"></div>
+	<div class="chapter_txt">
+	  <h3><%= user.name %></h3><hr>
+	  <p><%= user.tagline %></p>
+	</div>
+  </a>	
+</div>

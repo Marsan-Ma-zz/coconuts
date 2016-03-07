@@ -1,0 +1,49 @@
+<div class='well' style='padding: 8px 0'>
+  <ul class='nav nav-list'>
+
+    <!-- Home -->
+    <li class='nav-header'>Home</li>
+    <li class='<%= "active" if params["controller"] == 'home' %>'>
+      <%= link_to "Dashboard", cpanel_root_path %>
+    </li>
+    <li class="divider"></li>
+
+    <!-- Posts -->
+    <li class='nav-header'>Post</li>
+    <li><%= link_to "All Posts", cpanel_posts_path %></li>
+    <li><%= link_to "New Posts", new_cpanel_post_path %></li>
+    <li><%= link_to "Categories", cpanel_categories_path %></li>
+    <li><%= link_to "Tags", cpanel_tags_path %></li>
+    <li class="divider"></li>
+
+    <!-- Media -->
+    <li class='nav-header'>Media</li>
+    <li><%= link_to "Photos", cpanel_photos_path %></li>
+    <li class="divider"></li>
+
+  <% if current_user.admin? %>
+    <!-- Posts Flow-->
+    <li class='nav-header'>Post IO</li>
+    <li><%= link_to "Import Feeds", cpanel_blogs_path %></li>
+    <li><%= link_to "Export Feeds", cpanel_feeds_path %></li>
+    <li class="divider"></li>
+
+    <!-- Users -->
+    <li class='nav-header'>Admin</li>
+    <li><%= link_to "HomeCarousel", cpanel_note_path("carousel") %></li>
+    <li><%= link_to "Sidebar", cpanel_sidebars_path %></li>
+    <li><%= link_to "WordCount", cpanel_note_path("word_count") %></li>
+    <li><%= link_to "Manage Users", cpanel_users_path %></li>
+    <li><%= link_to "Features", cpanel_features_path %></li>
+    <li><%= link_to "Cache", cpanel_note_path("cache_list") %></li>
+    <li class="divider"></li>
+
+    <!-- Specials -->
+    <li class='nav-header'>Special</li>
+    <li><%= link_to "Settings", cpanel_notes_path %></li>
+    <li><%= link_to "Event Q&A", cpanel_note_path("asks_list") %></li>
+    <li class="divider"></li>
+  <% end %>
+  </ul>
+</div>
+

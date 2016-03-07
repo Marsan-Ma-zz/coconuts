@@ -1,0 +1,14 @@
+<%= render "iframes/vendor_sidebar" if params[:vendor] %>
+
+<% render "shared/sidebar/events" %>
+<%= render "shared/sidebar/subscribe" %>
+<%= render "shared/sidebar/ranking" %>
+<% if not params[:id] == "staff" %>
+  <% render "shared/sidebar/recommended" %>
+  <%= render "shared/sidebar/fbfanpage" %>
+  <%= render "shared/sidebar/gplus" %>
+  <% render "shared/sidebar/social" %>
+<% end %>
+
+
+

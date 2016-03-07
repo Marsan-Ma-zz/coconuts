@@ -1,0 +1,18 @@
+<div class="main wrapper clearfix">
+  <article class="<%= @mp_class %>">
+    <h3>Big Data Magazine</h3>
+    <ul class="post-list clearfix">
+      <% @features.each do |i| %>
+      <li>
+        <div class="post excerpt" style="height:215px;">
+          <a href="<%= i.post_ids.include?(' ') ? feature_path(i.slug) : i.post_ids %>" target="_blank" >
+            <div class="post-cover" style="background-image: url('<%= i.thumbnail %>')"></div>
+            <h4><%= trim(i.title, 70) %></h4>
+            <p><%= trim(i.excerpt, 120) %></p>
+          </a>
+        </div>
+      </li>
+      <% end %>
+    </ul>    
+  </article>
+</div>

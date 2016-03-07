@@ -1,0 +1,80 @@
+@import "base";
+
+#sidebar {
+  h3 {color: #111;}
+  p {color: #444;}
+  &:hover{
+    h3, p, .author {
+      color: #007ca5;
+    }
+  }
+}
+
+#social_btns {
+  margin: 10px auto 0;
+  text-align: center;
+  $sbtn_width: 50px;
+  $sbtn_mob_width: 40px;
+  a {
+    display: inline-block;
+    width: $sbtn_width;
+    height: $sbtn_width;
+    background-size: 5*$sbtn_width 2*$sbtn_width;
+    background-repeat:no-repeat;
+    background-image: url($aws_static + '/social/5icons.png');
+  }
+  #btn_rss      {
+    background-position: 0 (-$sbtn_width);
+    &:hover { background-position: 0 0; }
+  }
+  #btn_twitter  {
+    background-position: (-$sbtn_width) (-$sbtn_width);
+    &:hover { background-position: (-$sbtn_width) 0; }
+  }
+  #btn_google   {
+    background-position: 2*(-$sbtn_width) (-$sbtn_width);
+    &:hover { background-position: 2*(-$sbtn_width) 0; }
+  }
+  #btn_facebook {
+    background-position: 3*(-$sbtn_width) (-$sbtn_width);
+    &:hover { background-position: 3*(-$sbtn_width) 0; }
+  }
+  #btn_plurk {
+    background-position: 4*(-$sbtn_width) (-$sbtn_width);
+    &:hover { background-position: 4*(-$sbtn_width) 0; }
+  }
+  @media (max-width: 1199px) {
+    a {
+      width: $sbtn_mob_width;
+      height: $sbtn_mob_width;
+      background-size: 5*$sbtn_mob_width 2*$sbtn_mob_width;
+    }
+    #btn_rss      {
+      background-position: 0 (-$sbtn_mob_width);
+      &:hover { background-position: 0 0; }
+    }
+    #btn_twitter  {
+      background-position: (-$sbtn_mob_width) (-$sbtn_mob_width);
+      &:hover { background-position: (-$sbtn_mob_width) 0; }
+    }
+    #btn_google   {
+      background-position: 2*(-$sbtn_mob_width) (-$sbtn_mob_width);
+      &:hover { background-position: 2*(-$sbtn_mob_width) 0; }
+    }
+    #btn_facebook {
+      background-position: 3*(-$sbtn_mob_width) (-$sbtn_mob_width);
+      &:hover { background-position: 3*(-$sbtn_mob_width) 0; }
+    }
+    #btn_plurk {
+      background-position: 4*(-$sbtn_mob_width) (-$sbtn_mob_width);
+      &:hover { background-position: 4*(-$sbtn_mob_width) 0; }
+    }
+  }
+}
+
+//Facebook panel responsive
+#fb_panel {
+  .fb_iframe_widget, .fb_iframe_widget span, .fb_iframe_widget span iframe[style] {
+      width: 100% !important;
+  }
+}

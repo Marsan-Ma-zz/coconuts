@@ -1,0 +1,78 @@
+#================================================= 
+#  [phpMyAdmin need php, nginx]
+#================================================= 
+sudo apt-get update
+sudo apt-get install python-software-properties
+sudo add-apt-repository ppa:nginx/stable
+sudo add-apt-repository ppa:nginx/php5
+#sudo add-apt-repository ppa:nijel/phpmyadmin
+sudo apt-get upgrade
+
+# install php, nginx
+sget nginx php5-fpm php5-cli php5-curl php5-gd php5-mcrypt php5-mysql #mysql-server
+sudo service nginx start
+sudo service php5-fpm start
+
+# config php
+svi /etc/php5/fpm/pool.d/www.conf # modify user
+sudo service php5-fpm restart
+
+# config nginx
+cd /etc/nginx/sites-available
+sudo rm ../sites-enabled/default
+# add a new file, and paste following as nginx setup
+sudo service nginx reload # should setup project first, else nginx will say 'error: no such file...'
+
+# s3cmd to manage assets
+s3cmd sync gallery s3://wiredtw/wp-content/
+s3cmd sync uploads s3://wiredtw/wp-content/
+
+# FAQ:
+1. only see 'welcome to nginx' page: delete nginx default site in /etc/nginx/site-enable/default, replace it with your site-setup.
+2. only see wordpress initialize page: mysql might unavailable or haven't import data, wordpress can not find your site.
+3. only see main page, but any other page is not found: main page may provided by redis server, your site haven't really come alive yet. 
+   or the nginx setup is wrong and always find wrong path for page, see logs/error.log
+4. can not load anything (often after reboot server) => nginx or php5-fpm not initialized, sudo service 'nginx/php5-fpm' 'start/restart'
+
+#================================================= 
+#  [phpMyAdmin setup in nginx]
+#================================================= 
+upstream php {
+        server unix:/tmp/php-cgi.socket;
+        server 127.0.0.1:9000;
+}
+
+server {
+  listen          80 default_server;
+  server_name     localhost;
+  charset         utf-8;
+
+  access_log      /home/marsan/workspace/wired/current/logs/access.log;
+  error_log       /home/marsan/workspace/wired/current/logs/error.log;
+  root            /home/marsan/workspace/wired/current;
+
+  # on all requests, try for a real file.
+  # if it doesn't exist, forward onto out index.php for wordpress to rewrite or 404 nicely
+  location / {
+    index index.php
+    try_files $uri $uri/ /index.php;
+  }
+
+  # this makes wordpress works
+  if (!-e $request_filename)
+  {
+      rewrite ^/(.*)$ /index.php?q=$1 last;
+  }
+  location ~ \.php$ {
+      fastcgi_pass   127.0.0.1:9000;
+      fastcgi_index  index.php;
+      fastcgi_param  SCRIPT_FILENAME  /home/marsan/workspace/wired$fastcgi_script_name;
+      include        fastcgi_params;
+  }
+
+  location = /robots.txt { allow all; log_not_found off; access_log off; } # robots.txt is allowed but let's not log it
+  location = /favicon.ico { log_not_found off; access_log off; } # lets not log favicon requests, even if it is missing
+  location ~* \.(js|css|png|jpg|jpeg|gif|ico)$ { expires max; log_not_found off; } # cache expires @ max
+  location ~ /\. { deny all; access_log off; log_not_found off; } # deny access to dot files
+}
+

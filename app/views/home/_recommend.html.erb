@@ -1,0 +1,23 @@
+<div class="box">
+  <div class="divider_cap"><span>Recommented Readings</span></div>
+  <%= item = get_note("RC_TED"); render "home/rec", :item => item if item %>
+
+  <!-- Taiwan KickStarter -->
+  <div class="home_cat">
+    <a href="http://www.kickstarter.com/projects/1081571316/rhino-shield-the-impact-resistant-screen-protector?ref=live">
+      <div class="cat_ribbon">Taiwan KickStarter</div>
+        <iframe class="cat_img" src="http://www.kickstarter.com/projects/1081571316/rhino-shield-the-impact-resistant-screen-protector/widget/video.html" frameborder="0" scrolling="no" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+      <div>
+        <h3>Rhino Shield: The Impact Resistant Screen Protector</h3>
+        <small>Rhino Shield protects your iPhone, iPad, Android mobile and tablet screens against impact.</small>
+        <p class="author">--- <%= "KickStarter / Evolutive Labs / 2013-03-13" %></p>
+      </div>
+    </a>
+  </div>
+  <hr class="mobile_divider">
+
+  <%= item = get_note("RC_PANSCI"); render "home/rec", :item => item if item %>
+  <%= item = get_note("RC_GUOKR"); render "home/rec", :item => item if item %>
+  <%= item = get_note("RC_NSC"); render "home/rec", :item => item if item %>
+  <%= item = get_note("RC_PANSCI_ASK"); render "home/rec", :item => item if item %>
+</div>

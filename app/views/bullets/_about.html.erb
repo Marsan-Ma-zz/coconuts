@@ -1,0 +1,13 @@
+<div class="bullet-curate">
+  <div class="bullet-curate-btn">
+    <%= link_to("", "", :onclick => "event.preventDefault();") %>
+  </div>
+
+  <div class="bullet-curate-menu">
+    <div class="bullet-curate-menu-title">分享此文：</div>
+    <%= link_to("", "http://www.facebook.com/sharer/sharer.php?u=#{Setting.domain}/techtrend", :target => "_blank", :id => "soc-facebook", :title => "分享到Facebook") %>
+    <%= link_to("", "https://plus.google.com/share?url=#{Setting.domain}/techtrend", :target => "_blank", :id => "soc-google", :title => "分享到Google+") %>
+    <%= link_to("", "http://twitter.com/home?status=#{Setting.domain}/techtrend", :target => "_blank", :id => "soc-twitter", :title => "分享到Twitter") %>
+    <%= link_to("", "http://www.plurk.com/?qualifier=shares&status=#{Setting.domain}/techtrend", :target => "_blank", :id => "soc-plurk", :title => "分享到Plurk") %>
+  </div>
+</div>

@@ -1,0 +1,149 @@
+@import "base";
+
+//========================================
+//  TechTrend
+//========================================
+#techtrend_nav {
+  a {
+    color: white;
+    &:hover {color: #E67E22;}
+  }
+  select {
+    font-size: 18px;
+  }
+  #techtrend_sort {
+    display: inline-block;
+    //float: right;
+  }
+  #techtrend_title {
+    div {display: none;}
+    &:hover {
+      div {display: block;}
+    }
+  }
+}
+
+//========================================
+//  Bullet Main
+//========================================
+.bullet-wrap {
+  height: 420px;
+  h3 {
+    padding: 0 !important;
+    height: 50px;
+    border-bottom: 0 !important;
+    img {
+      width: 50px;
+      height: 50px;
+    }
+  }
+  .bullet {
+    * {text-decoration: none;}
+    h4 {font-size: 18px !important;}
+    p {font-size: 14px !important;}
+    .bullet-inside {
+      display:none;
+      h4 {color: #000 !important;}
+      p {color: #7d7d7d !important;}
+    }
+  }
+  &:hover {
+    .bullet-outside {display:none;} 
+    .bullet-inside {display:block;}
+  }
+}
+
+//========================================
+//  Bullet Curate
+//========================================
+.bullet-curate-btn {
+  float:right;
+  line-height: 50px;
+  //width:50px;
+  padding: 0 5px;
+  color: white;
+  a {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-size: 20px 40px;
+    //background-image: url($aws_static + "/social/like.png");
+    background-image: url(image-path("social/like.png"));
+    .count {
+      color: white;
+      margin-top: 4px;
+    }
+    &.follow {
+      background-position: 0 -20px;
+    }
+    &.unfollow, &.dummyfollow {
+      background-position: 0 0;
+    }
+  }
+}
+
+.bullet-curate:hover {
+  .bullet-curate-btn {
+    background: #E67E22;
+  }
+  .bullet-curate-menu {
+    display: inline-block;
+  }
+  .bullet-relate-posts {
+    display: inline-block;
+  }
+}
+.bullet-curate-menu {
+  display: none;
+  float: right;
+  text-align: right;
+  position: relative;
+  height: 40px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  background: #E67E22;
+  color: #000;
+  z-index: 1000;
+  .bullet-curate-menu-title {
+    height: 40px;
+    color: white;
+    font-size: 14px;
+    vertical-align: middle;
+    display: inline-block;
+  }
+  a {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    transition-duration: .25s;
+    margin: 8px 8px 0 0;
+    background-image: url($aws_static + "/theme/icon-social-white.png");
+    &#soc-facebook { background-position: 0 0;}
+    &#soc-twitter { background-position: -24px 0;}
+    &#soc-google { background-position: -48px 0;}
+    &#soc-plurk { background-position: -72px 0;}
+  }
+}
+
+.bullet-relate-posts {
+  display: none;
+  float: right;
+  position: relative;
+  left: 0;
+  top: 0;
+  width: 100%;
+  color: white;
+  z-index: 1000;
+  background: white;
+  height: 420px;
+  hr {
+    margin: 2px;
+  }
+  p {
+    color: black !important;
+    padding: 5px 14px !important;
+  }
+}
+
+

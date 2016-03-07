@@ -1,0 +1,35 @@
+<ul class="post-list clearfix" id="home_cats">
+  <% for i in 0..7 %>
+    <% if @news.blank? %>
+      <h3>Oops... there are NO posts in database ...</h3>
+    <% else %>
+      <%= render("/home/cat", :cat => @news[i]) if @news[i] %>
+    <% end %>
+  <% end %>
+</ul>
+
+
+<h3>Don't Miss</h3>
+<ul class="post-list clearfix sub" id="home_dontmiss">
+  <li>
+    <div class="post excerpt <%= post_css_class(@news[8].get_cat) %>">
+      <a href="<%= post_path(@news[8].slug) %>" title="<%= trim(@news[8].title, 60) %>" target="_blank" >
+        <div class="post-cover" style="background-image: url('<%= @news[8].thumbnail %>')">
+        <div class="tri"></div></div>
+        <h4><%= @news[8].title %></h4>
+      </a>
+    </div>
+  </li>
+  <% @news[9..13].each do |i| %>
+    <li>
+      <div class="post excerpt <%= post_css_class(i.get_cat) %>">
+        <a href="<%= post_path(i.slug) %>" title="<%= trim(i.title, 60) %>" target="_blank" >
+          <h4><%= i.title %></h4>
+        </a>
+      </div>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to("Read more", posts_path, :class => "btn btn-block btn-inverse") %>
+

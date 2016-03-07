@@ -1,0 +1,80 @@
+#================================================= 
+#  [phpMyAdmin need php, nginx, mysql]
+#================================================= 
+sudo apt-get update
+sudo apt-get install python-software-properties
+sudo add-apt-repository ppa:nginx/stable
+sudo add-apt-repository ppa:nginx/php5
+sudo add-apt-repository ppa:nijel/phpmyadmin
+sudo apt-get upgrade
+
+# install php, nginx, mysql
+sget nginx php5-fpm php5-cli php5-curl php5-gd php5-mcrypt php5-mysql 
+sget mysql-server phpmyadmin # only in mysql server, and you want phpmyadmin
+sget mysql-client libmysqlclient-dev # for rails gem: mysql2, no need if wordpress only
+sudo service nginx start
+sudo service php5-fpm start
+sudo service mysql start
+
+# config php
+svi /etc/php5/fpm/pool.d/www.conf # modify user
+sudo service php5-fpm restart
+
+# config nginx
+cd /etc/nginx/sites-available
+# add a new file, and paste following as nginx setup
+cd /etc/nginx/sites-enabled
+# remove default, and make a link to the new file you just created in ../sites-available
+sudo service nginx reload
+
+# config mysql
+svi /etc/mysql/my.cnf   # change MySQL listen target, let mysql listen to inner-network
+# bind-address = 192.168.x.x # mysql server inner-ip, setting in /etc/hosts
+sudo service mysql restart
+#define('DB_HOST', 'mysql'); # define in wp-config.php of wordpress
+mysql -u root -p # grant access
+# drop database
+DROP DATABASE wired;
+# GRANT ALL ON web-server.* TO admin@'app' IDENTIFIED BY 'PASSWORD';
+GRANT ALL ON wired.* TO 'wired'@'Lancer' IDENTIFIED BY 'marsan54';  # database:wired, db-user:wired, client:Lancer, passwd:marsan54
+# import database: mysql -u <username> -p <dbname> < <dbfile>.sql , should create database first (could from phpMyAdmin)
+mysql -u root -p wired < wired.sql --default-character-set=utf8
+# dump database: mysqldump -u <username> -p –default-character-set=utf8 <dbname> > <dbfile>.sql
+mysqldump -u root -p –default-character-set=utf8 wired > wired.sql
+
+
+#================================================= 
+#  [phpMyAdmin setup in nginx]
+#================================================= 
+upstream php {
+        server unix:/tmp/php-cgi.socket;
+        server 127.0.0.1:9000;
+}
+
+server {
+  listen          80 default_server;
+  server_name     localhost;
+  charset         utf-8;
+
+  location /phpmyadmin {
+    root /usr/share/;
+    index index.php index.html index.htm;
+    location ~ ^/phpmyadmin/(.+\.php)$ {
+      try_files $uri =404;
+      root /usr/share/;
+      include fastcgi_params;
+      fastcgi_intercept_errors on;
+      fastcgi_pass php;
+    }
+    location ~* ^/phpmyadmin/(.+\.(jpg|jpeg|gif|css|png|js|ico|html|xml|txt))$ {
+      root /usr/share/;
+    }
+  }
+
+  location = /robots.txt { allow all; log_not_found off; access_log off; } # robots.txt is allowed but let's not log it
+  location = /favicon.ico { log_not_found off; access_log off; } # lets not log favicon requests, even if it is missing
+  location ~* \.(js|css|png|jpg|jpeg|gif|ico)$ { expires max; log_not_found off; } # cache expires @ max
+  location ~ /\. { deny all; access_log off; log_not_found off; } # deny access to dot files
+}
+
+

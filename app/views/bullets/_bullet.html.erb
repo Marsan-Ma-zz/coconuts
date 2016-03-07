@@ -1,0 +1,24 @@
+<% if not (bullet.title.empty? || bullet.summary.empty?) %>
+<li>
+  <div class="post excerpt bullet-wrap">
+    <%= render "bullets/curate", :bullet => bullet %>
+    <h3>
+      <%= image_tag("#{Setting.aws_static}/sumchip/#{bullet.source}.png", :title => "#{bullet.source}") %>
+      <%= bullet.created_at.to_s[0..15] %>
+    </h3>
+    <a class="bullet" href="<%= bullet.link %>" target="_blank">
+      <div class="bullet-outside">
+        <div class="post-cover" style="background-image: url('<%= bullet.get_thumb %>')">
+          <div class="tri"></div>
+        </div>
+        <h4><%= trim(bullet.title, 70) %></h4>
+        <p><%= trim(bullet.summary, 120) %></p>
+      </div>
+      <div class="bullet-inside">
+        <h4><%= bullet.title %></h4>
+        <p><%= bullet.summary %></p>
+      </div>
+    </a>
+  </div>
+</li>
+<% end %>

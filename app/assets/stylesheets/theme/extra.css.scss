@@ -1,0 +1,121 @@
+//========================================
+//  Home
+//========================================
+#home_dontmiss li:nth-child(2) {
+  h4 {
+    margin-top: 0;
+  }
+}
+//========================================
+//  Posts.index
+//========================================
+#infinite_chips, #home_cats {
+  .post.excerpt {
+    height: 420px;
+  } 
+}
+
+//========================================
+//  Posts.show
+//========================================
+#post_thumb {
+  width: 100%;
+  //margin-bottom: -30px;
+}
+
+#post_body {
+  margin-bottom: 30px;
+}
+
+.wrapimg {
+  img:not(.imgDiv) {
+    width: 100%;
+  }
+  p {
+    font-size: 14px;
+    padding: 7px 10px;
+    background-color: black;
+    color: white !important;
+    margin: 0;
+  }
+}
+
+// overwrite disqus css
+#post-rank {
+  line-height: 18px;
+  .dsq-widget-item {
+    margin: 0 !important;
+    border-bottom: 1px solid #dfdfdf ;
+    a {
+      font-weight: normal !important;
+      border-bottom: 0 !important;
+      margin: 0 !important;
+    }
+  }
+  p {
+    color: #7d7d7d;
+    padding: 0 !important;
+    text-align: right;
+  }
+  
+  .ranking_desc {
+    text-align: right;
+    color: #7d7d7d;
+  }
+}
+
+article.posts {
+  a {
+    color: #0575F4 !important;
+    &:hover { 
+      color: #E67E22 !important;
+    }
+  }
+}
+
+//========================================
+//  Navbar
+//========================================
+#login_btn {
+  background-image: url(image-path('avatar/24x24.png'));
+  display: block; 
+  width: 24px; 
+  height: 26px; 
+  background-position: center center; 
+  background-repeat: no-repeat; 
+  //text-indent: -9999px; 
+  line-height: 40px;
+}
+
+#nav_mobile {display: none;}
+@media only screen and (max-width: 640px) {
+  #nav_mobile {
+    display: inline-block;
+    float: right;
+    width: 70%;
+    margin: 10px;
+    font-size: 18px;
+  }
+}
+//========================================
+//  Sidebar
+//========================================
+#gplus_wrap {
+  margin: 14px 14px 0 14px;
+}
+
+//========================================
+//  Insiders
+//========================================
+#insiders {
+  .insider_name {
+    text-transform: capitalize;    
+  }
+  .post {
+    height: 200px;
+  }
+}
+
+
+
+

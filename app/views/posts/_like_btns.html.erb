@@ -1,0 +1,9 @@
+<div id="social_likes">
+  <%= like_button(Setting.facebook_token, :"show-faces" => true, :layout => "button_count", :width => "44px") %>
+  <span id="gplus_btn"><%= google_plus_button(:size => "medium", :annotation => "none") %></span>
+  <span id="twit_btn"><%= tweet_button(:text => @post.title, :via => "wired_tw", :count => "none") %></span>
+  <%= pinit_button(:media => @post.thumbnail, :description => "#{@post.title} from #{post_url(@post)} : #{@post.excerpt}") %>
+  <%= link_to(image_tag("#{Setting.aws_static}/social/plurk.jpg"), "http://www.plurk.com/?qualifier=shares&status=#{@post.title}/#{post_url(@post)}", :target => "_blank") %>
+  <script src="//platform.linkedin.com/in.js" type="text/javascript"></script>
+  <script type="IN/Share" data-url="<%= post_url(@post)%>"></script>
+</div>

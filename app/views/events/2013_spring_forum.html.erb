@@ -1,0 +1,440 @@
+<!-------------------------------- CSS ------------------------------------>
+<link href="http://fonts.googleapis.com/css?family=Arimo:regular ,italic,bold,bolditalic" rel="stylesheet" type="text/css" />
+<style>
+  /* General */
+  h2 {margin: 5px 0;}
+  * {font-family: "Arimo","微軟正黑體","蘋果儷中黑",Helvetica,Arial,FreeSans,"sans-serif";}
+
+  /* overlap layout */
+  #poster_wrapper {
+    width: 970px;
+    height: 1200px;
+    margin: 0px auto;
+    background-image: url("http://wiredtw.s3.amazonaws.com/wp-content/uploads/2013/03/big-data-bg.jpg");
+    background-position: center;
+    background-size: auto 100%;
+    background-repeat:no-repeat;
+    z-index: 0;
+  }
+  #poster_banner {
+    width: 700px;
+    height: 470px;
+    margin: 0px auto;
+    z-index: 100;
+  }
+  #poster_inner {
+    width: 700px;
+    height: 550px;
+    //background: #fff;
+    margin: 0px auto;
+    z-index: 200;
+  }
+
+  /* tabs */
+  .tab_handler {
+    padding: 5px 10px;
+    vertical-align: bottom;
+    color: yellow;
+    font-weight: bold;
+    text-decoration: none;
+    border: 1px solid yellow;
+	font-size: 12px;
+  }
+  #tab_0 {display: block;}
+  #tab_1 {display: none;}
+  #tab_2, #tab_3, #tab_4, #tab_5, #tab_6, #tab_7, #tab_8, #tab_9 {display: none;}
+  .active_handler {
+    background: yellow;
+    color: black;
+  }
+
+  /* content */
+  #inner_nav {  
+    margin: 20px 0 0 30px;
+    width: 640px;
+    height: 30px;
+  } 
+  .inner_content {
+    color: white;
+  }
+  .inner_left {
+    vertical-align: top;
+    width: 40%;
+    padding: 10px 10px 0 30px;
+  }
+  .inner_right {
+    vertical-align: top;
+    padding: 10px 30px 0 10px;
+  }
+
+  /* special */
+  #etu_txt {display: block;}
+  #etu_video {display: none;}
+  #forum_schedule {
+    font-size: 14px;
+    text-align: left;
+    valign: top;
+  }
+  #forum_schedule h3 {
+    font-size: 14px;
+    color: white;
+  }
+  #forum_schedule th {
+    text-align: left;
+  }
+  #forum_schedule td {
+    valign: top;
+    padding: 4px 20px;
+    line-height: normal !important;
+  }
+
+  /* sidelights */
+  .sidelights {color: #fff; width: 700px; padding-left: 0px; margin-left: -10px;}
+  .sidelights ul li {float: left;padding: 0 10px;width: 140px;margin: 0 0 15px 0;}
+  .sidelights ul li:first-child {width:149px;border-right: 1px solid #666;padding-left: 0;}
+  .sidelights ul li:last-child {padding-right: 0;}
+  .sidelights ul li a img {border: 2px solid #ff0}
+  .sidelights ul li a img:hover {border-color: #fff}
+  .sidelights ul li small {font-size: 11px;}
+  .sidelights:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  /* patch for beta site css overwite */
+  #poster_wrapper * {
+    line-height: normal !important;
+  }
+  
+  .profile {
+    margin: 10px 0 !important;
+    padding: 0 !important;
+    background-color: none !important;
+  }
+
+  .sidelights li {
+    list-style: none;
+  }
+</style>
+
+<div class="main wrapper clearfix">
+  <article class="<%= @mp_class %>">
+<!-------------------------------- HTML ------------------------------------>
+<div id="poster_wrapper">
+  <div id="poster_banner"></div>
+  <div id="poster_inner">
+    <!-- NavBar -->
+    <div id="inner_nav">
+      <a href="#" class="tab_handler" target="tab_1">首頁</a>
+      <a href="#" class="tab_handler" target="tab_4">議程</a>
+      <a href="#" class="tab_handler" target="tab_8">IBM</a>
+      <a href="#" class="tab_handler" target="tab_2">Barclays</a>
+      <a href="#" class="tab_handler" target="tab_5">趨勢科技</a>
+      <a href="#" class="tab_handler" target="tab_9">張善政</a>
+      <a href="#" class="tab_handler" target="tab_3">Etu知意圖</a>
+      <a href="#" class="tab_handler" target="tab_6">Facebook</a>
+      <a href="#" class="tab_handler" target="tab_7">Billy</a>
+      <!--a href="#" class="tab_handler" target="tab_0">報名</a-->
+      <a href="#" class="tab_handler active_handler" target="tab_0">花絮</a>
+    </div>
+
+    <!-- 首頁 -->
+    <div id="tab_1" class="tab_content">
+      <table class="inner_content">
+        <tr>
+          <td class="inner_left"><img src="http://wiredtw.s3.amazonaws.com/wp-content/uploads/2013/04/big-data-thinking.png" alt="" width="252" height="137" />            <p style="line-height: 24px; font-size: 15px;">被譽為雲端時代殺手級應用的Big-Data，已經一步步改變全球商業模式的面貌，這個你最接近，卻最不了解的明星產業，正以意想不到的新面貌，飛快成長。</p>
+          </td>
+          <td class="inner_right" style="font-size: 13px;">
+            <p style="line-height: 21px;">當資料已經變成一種新的經濟資產，不論你處在哪個產業，都不能不懂這個雲端時代的黃金貨幣-Big Data。這個由大數據所引爆的資料革命，已經促使各行各業面臨轉型的決勝關鍵點。</p>
+            <p style="margin-top: 18px; line-height: 21px;">每天，光是流向社群網站Facebook與Twitter的資料量，就多達3億張照片、25億則發文、27億按讚數。你可曾好奇過，為何只要在搜尋欄上彈手一敲，便能有相關資訊一併跑出，這就是Big Data貼近你我的生活應用：分析數據，讓企業了解消費者行為。只要搞懂Big Data，你也可以掌握未來消費金脈，搶佔這股新兆元商機！</p>
+            <p style="margin-top: 18px; line-height: 21px;">這波淘金熱，從政府、傳播通訊業、消費性服務業、銀行/證券業到製造業無不受到影響，他不但是大家一個共贏的機會，更是許多企業未來的決勝關鍵點。現在，正值台灣企業關鍵的轉型時刻。當Big Data商機大戰來臨，你要如何搶到這場消費競賽的入場卷？</p>
+            <p style="margin-top: 18px; line-height: 21px;">包括科技大廠IBM，台灣業者趨勢科技及精誠資訊，到社群網站龍頭Facebook，都在積極佈局數據市場，這次，他們還將親身傳授，讓你換上最新鮮的「Big Data思考」腦袋。</p>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- 精誠資訊 -->
+<div id="tab_3" class="tab_content">      <table class="inner_content">
+        <tr id="etu_txt">
+          <td class="inner_left">
+            <img src="http://wiredtw.s3.amazonaws.com/wp-content/uploads/2013/03/etu_01.jpg" width="100%"><br>
+            <h3 style="font-size: 16px; line-height: 18px; margin-top: 10px;" class="profile">蔣居裕 Fred Chiang<br><small style="font-size: 12px; line-height: 18px;">Etu負責人</small></h3>            <small style="font-size: 12px; line-height: 18px;">悠遊於軟體與網路兩大領域超過 20 年，目前為精誠集團擬定數據價值策略與發展自有品牌產品。專長為軟體產業研究、產品發展策略、社群行銷、網路技術應用，並積極參與台灣 Open Source 與 Open Data 社群，也是台灣少數擁有 Cloudera Certified Administrator for Apache Hadoop 認證的專業人士。其經營的《Fred 豢養的雲中象》是台灣少數以產業與企業角度專寫 Big Data 趨勢、價值、與技術的部落格。</small>
+          </td>
+          <td class="inner_right" style="font-size: 13px; line-height: 21px;">
+            <img src="http://wiredtw.s3.amazonaws.com/wp-content/uploads/2013/03/etu_logo_eng_slogan.png" height="90px">
+            <h2 style="font-size: 18px; line-height: 21px;">轉兌數據的價值-從導購到策購</h2>
+            <p>《紙牌屋》，這部由大衛芬奇導演、凱文史貝西主演、Netflix 自製獨家線上發行，於 2013.2.1 一口氣推出首季 13 集，上架兩週後即被 IMDb MOVIEmeter 評為最受歡迎的電視影集，在 Netflix 有上架的所有地區，包括北美、英國、愛爾蘭、拉丁美洲、以及斯堪的納維亞半島，都獲得證實為收視率第一的節目。但其實這場成功的背後，早已經過精密的設計，充分展現巨量資料分析的威力。這個案例啟發的，絕對不只是線上媒體，電子商務、零售、泛流通業一樣都可從中找到自身的價值對應：</p>
+            <p>基本盤是導購，重點在發現關聯、蒐集體驗；高階科學是策購，重點是設計關聯、預知體驗。在這場分享中，講者將以 Etu，這個亞洲原生 Big Data 品牌在兩岸的市場實踐經驗與客戶案例，說明企業該如何善用 Big Data 來創造更佳的客戶體驗，實現更高的數據報酬。</p>
+            <a href="#" class="etu_video_handler" style="float: right; margin-top:10px;">
+              <p style="color: white; display: inline-block;">形象影片</p>
+              <img src="http://wiredtw.s3.amazonaws.com/wp-content/uploads/2013/03/etc_video.png" height="90px">
+            </a>
+          </td>
+        </tr>
+        <tr id="etu_video">
+          <td>
+            <iframe width="700px" height="420px" src="http://www.youtube.com/embed/GO1yZKpSZeE" frameborder="0" allowfullscreen></iframe>
+            <a href="#" class="etu_video_handler" style="float: right;">
+              <h3 style="color: white; display: inline-block;">回簡介</h3>
+              <img src="http://wiredtw.s3.amazonaws.com/wp-content/uploads/2013/03/etu_02.jpg" width="100px">
+            </a>          </td>        </tr>      </table>
+    </div>
+
+    <!-- 英商巴克萊 -->
+    <div id="tab_2" class="tab_content">      <table class="inner_content">
+        <tr id="etu_txt">
+          <td class="inner_left">
+            <img src="http://wiredtw.s3.amazonaws.com/wp-content/uploads/2013/04/icliu.jpg" width="228" height="173"><br>
+            <h3 style="font-size: 16px; line-height: 18px;" class="profile">劉奕成 I-Cheng (I.C.) Liu<br><small style="font-size: 12px; line-height: 18px;">英商
+巴克萊銀行董事總經理</small></h3>            <small style="font-size: 12px; line-height: 18px;">劉奕成先生現為英商巴克萊銀行　董事總經理。畢業於美國賓州大學華頓商學院MBA、台灣大學工管系。歷來的工作與金融密切相關，先後任職於悠遊卡公司董事長、JPMorgan投資銀行副總裁、國泰金控副總經理、國泰世華銀行風控長、消金與企金執行長。曾在台北紐約東京香港上海哈拉雷工作，造訪過大聯盟31個主場。電影海角七號、台北二一資金贊助人。數位時代等三本雜誌專欄作家。</small>
+          </td>
+          <td class="inner_right" style="font-size: 13px; line-height: 21px;">
+          <img src="http://wiredtw.s3.amazonaws.com/wp-content/uploads/2013/04/logo-barclays.png" width="100%" />
+            <h2 style="font-size: 18px; line-height: 21px;">大數據：同時掌握創新力、競爭力與生產力</h2><br>
+            <p>當悠遊卡不再只是一張交通儲值票，而是進化為個人專屬的行動支付工具時，台灣社會將累積前所未有的支付行為大數據資料庫。前悠遊卡董事長、現任巴克萊投資銀行台北分行董事總經理劉奕成，以悠遊卡為具體實例，以及目前在投資銀行看到的全球市場現狀，談台灣將如何在全球廣義電子商務市場崛起中，運用大數據應用找到絕佳機會。品牌決策者在尋求數位銷售解決方案的同時，要如何在短時間內，以低成本、低風險與高效率的方式，累積大數據庫，並建立可長久應用的數據分析競爭優勢？如何在提昇銷售量的同時，也和消費者建立具忠誠度的客戶關係？</p>
+          </td>
+        </tr>
+        <tr id="etu_video">
+          <td>
+            <iframe width="700px" height="420px" src="http://www.youtube.com/embed/GO1yZKpSZeE" frameborder="0" allowfullscreen></iframe>
+            <a href="#" class="etu_video_handler" style="float: right;">
+              <h3 style="color: white; display: inline-block;">回簡介</h3>
+              <img src="http://wiredtw.s3.amazonaws.com/wp-content/uploads/2013/03/etu_02.jpg" width="100px">
+            </a>          </td>        </tr>      </table>
+    </div>
+
+
+    <!-- 議程 -->
+    <div id="tab_4" class="tab_content">
+      <div style="overflow-y: false; height: 500px; margin-left: 20px;">
+        <table id="forum_schedule" style="border-collpase:collpase; color: white;">
+          <tr><td></td></tr>
+          <tr><td colspan=2 style="border-bottom: 1px solid white;">日期：2013年4月26日 / 地點: W Hotel</td></tr>
+          <tr><td style="width: 100px; border-bottom: 1px solid white;">時間</td><td style="border-bottom: 1px solid white; width: 400px;">議程</td></tr>
+          <tr><td valign="top">09:30-10:30</td><td valign="top">BIG DATA = 大「智慧」<br />
+<small style="font-size: 12px;">林世偉 Eddy Lin / 台灣IBM公司軟體事業處副總經理</small></td></tr>
+          <tr><td valign="top">10:30-11:10</td><td valign="top">大數據：同時掌握創新力、競爭力與生產力<br />
+<small style="font-size: 12px;">劉奕成 I-Cheng (I.C.) Liu / 英商 巴克萊銀行董事總經理</small></td></tr>
+          <tr><td valign="top">11:10-12:00</td><td valign="top">大數據：台灣百年難得一見的機會！<br />
+<small style="font-size: 12px;">張明正 / 客座總編輯 / 趨勢科技董事長</small></td></tr>
+          <tr><td valign="top">12:00-13:30</td><td valign="top">用餐休息</td></tr>
+          <tr><td valign="top">13:30-13:35</td><td valign="top">再次歡迎</td></tr>
+          <tr><td valign="top">13:35-14:25</td><td valign="top">開放數據與經濟發展<br />
+<small style="font-size: 12px;">張善政 / 行政院政務委員</small></td></tr>
+          <tr><td valign="top">14:25-15:30</td><td valign="top">未來兆元商機，台灣企業主的大數據計畫<br><small style="font-size: 12px;">Facebook / Jayne Leung / Director of North Asia<br />
+蔣居裕 Fred Chiang / Etu負責人<br />
+趨勢科技 / 曾昆一 / 新事業開發暨產品行銷協理</small></td></tr>
+          <tr><td valign="top">15:30-16:15</td><td valign="top">Big Data 後的未來人性世界
+<br />
+<small style="font-size: 12px;">潘建志 Billy Pan / 台灣部落格協會理事長</small><br />
+<small style="font-size: 12px; margin-left:96px;">台北萬芳醫學中心精神科主治醫師</small></td></tr>
+          <tr><td valign="top">16:15-16:30</td><td valign="top">Big Data 延伸的所需人才<br><small style="font-size: 12px;">Wired總編輯 程九如</small></td></tr>
+          <!--
+          <tr><td valign="top">09:00-09:30</td><td valign="top">歡迎</td></tr>
+          <tr><td valign="top">09:30-10:30</td><td valign="top">當科技龍頭發現資料與日俱增時...</td></tr>
+          <tr><td valign="top">10:30-11:20</td><td valign="top">大數據：同時掌握創新力、競爭力與生產力</td></tr>
+          <tr><td valign="top">11:20-12:00</td><td valign="top">大數據：台灣百年難得一見的機會！</td></tr>
+          <tr><td valign="top">12:00-13:30</td><td valign="top">用餐休息</td></tr>
+          <tr><td valign="top">13:30-13:35</td><td valign="top">再次歡迎</td></tr>
+          <tr><td valign="top">13:35-14:40</td><td valign="top">開放數據與經濟發展</td></tr>
+          <tr><td valign="top">14:40-14:50</td><td valign="top">休息</td></tr>
+          <tr><td valign="top">14:50-15:50</td><td valign="top">未來兆元商機，台灣企業主的大數據計畫</td></tr>
+          <tr><td valign="top">15:50-16:40</td><td valign="top">Big Data 後的未來人性世界</tr>
+          <tr><td valign="top">16:40-16:55</td><td valign="top">Big Data 延伸的所需人才</td></tr>
+          -->
+          <tr><td valign="top">16:30-16:35</td><td valign="top">結束　並　感謝</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- 趨勢 -->
+    <div id="tab_5" class="tab_content">
+      <table class="inner_content">
+        <tr id="trend_txt">
+          <td class="inner_left">
+            <img src="http://wiredtw.s3.amazonaws.com/wp-content/uploads/2013/04/chairman.jpg" width="226" height="172"><br>
+            <h3 style="font-size: 16px; line-height: 18px; margin-top: 10px;" class="profile">張明正<br>客座總編輯<br />
+<small style="font-size: 12px; line-height: 18px;">趨勢科技董事長</small></h3>          </td>
+          <td class="inner_right" style="font-size: 13px; line-height: 21px;">
+            <img src="http://wiredtw.s3.amazonaws.com/wp-content/uploads/2013/04/trend-logo-11.png" height="90px">
+            <h2 style="font-size: 18px; line-height: 21px;">大數據：台灣百年難得一見的機會！</h2><br>
+            <p>當商業世界亟欲享用大數據分析科技帶來的各種美好時，全人類也一起面臨一個全新的社會挑戰：資料保護與資料安全。以防毒軟體起家，來自台灣的國際軟體公司趨勢科技卻早在2003年即跨入雲端大數據儲存、分析技術的研發，如今成為全球少數同時擁有大數據安全解決方案實務經驗的品牌。</p>
+            <p style="margin-top: 18px;">趨勢科技創辦人張明正與Wired總編輯Nice精采對談，大數據時代的資料安全與個人隱私問題，將使人類社會面臨什麼樣的新規範價值挑戰？大數據時代的資料安全作法是什麼？引入大數據分析工具的同時，如何保護品牌與消費者的資料安全？</p>
+          </td>
+        </tr>
+      </table>
+    </div>
+    
+    <!-- Facebook -->
+    <div id="tab_6" class="tab_content">
+      <table class="inner_content">
+        <tr id="trend_txt">
+          <td class="inner_left">
+            <img src="http://wiredtw.s3.amazonaws.com/wp-content/uploads/2013/04/jayne.jpg" width="228" height="173"><br>
+            <h3 style="font-size: 16px; line-height: 18px; margin-top: 10px;" class="profile">Jayne Leung <br><small style="font-size: 12px; line-height: 18px;">Director of North Asia at Facebook</small></h3><small style="font-size: 12px; line-height: 18px;">Jayne Leung is the Director of North Asia at Facebook. She is responsible for building the Facebook advertising business with primary focus in Hong Kong and Taiwan. </small><br><br><small style="font-size: 12px; line-height: 18px;">Prior to that Jayne was with DoubleClick for over 8 years and joined Google via the acquisition. Her last role was Asia Pacific Head of New Media Sales at Google.</small></td>
+          <td class="inner_right" style="font-size: 13px; line-height: 21px;">
+          <img src="http://wiredtw.s3.amazonaws.com/wp-content/uploads/2013/04/fb-logo.png" width="322" height="90">
+            <h2 style="font-size: 18px; line-height: 21px;">當資訊不對稱不再是技術問題，台灣經濟成長的關鍵下一步是？</h2><br>
+            <p>大數據應用在台灣的現狀是什麼？美國企業2012年開始積極尋求大數據解決方案以活化企業的資料資產，探勘過去無法萃取的商業價值。大中華區企業應用大數據處理與分析的方式與狀況，又有什麼不同？台灣軟體品牌在全球大數據趨勢中，又扮演哪些角色？這些全球經驗，如何把大數據帶入台灣企業界？</p>
+          </td>
+        </tr>
+      </table>
+    </div>
+    
+    <!-- Billy Pan -->
+    <div id="tab_7" class="tab_content">
+      <table class="inner_content">
+        <tr id="trend_txt">
+          <td class="inner_left">
+            <img src="http://wiredtw.s3.amazonaws.com/wp-content/uploads/2013/04/billy.jpg" width="228" height="173"><br>
+            <h3 style="font-size: 16px; line-height: 18px; margin-top: 10px;" class="profile">潘建志  Billy Pan<br><small style="font-size: 12px; line-height: 18px;">台灣部落格協會理事長 比利潘<br />台北萬芳醫學中心精神科主治醫師</small></h3></td>
+          <td class="inner_right" style="font-size: 13px; line-height: 21px;">
+            <h2 style="font-size: 18px; line-height: 21px;">Big Data 後的未來人性世界</h2><br>
+            <p>未來的黃金球員，完全不再需要用球賽的表現來證明，但可以數據分析幫這球員分析他的爆發力。未來的公正裁派，完全不再需要上場與球員貼身觀戰，但可以數據分析的判出好壞球。</p>
+            <p style="margin-top: 18px;">未來再也沒有疾病，因為數據分析已經讓剛出身的嬰孩大打上所有的預防針。未來再也沒有災難，因為數據分析會讓所有防災設備都在地震、海嘯、龍捲風來前已經準備好。</p>
+            <p style="margin-top: 18px;">這樣的世界，不是已經是我們要的嗎? 沒有災難、沒有病痛，都有最可靠的依據。</p>
+            <p style="margin-top: 18px;">但是，</p>
+            <p style="margin-top: 18px;">未來的黃金球員，完全沒有機會在上場用球賽來表現，因為數據分析該球員OUT。未來的公正裁派，完全不需要有經驗並可被尊重的人，因為數據分析的機器人 IN。</p>
+            <p style="margin-top: 18px;">未來再也沒有疾病，一對明明相愛的情人不可以有下一代，因為數據分析。未來再也沒有災難，因為數據海嘯即將來臨。</p>
+            <p style="margin-top: 18px;">這是你我要面對的未來人性世界，你，準備好與數據共存嗎?</p>
+          </td>
+        </tr>
+      </table>
+    </div>
+    
+    <!-- IBM -->
+    <div id="tab_8" class="tab_content">
+      <table class="inner_content">
+        <tr id="trend_txt">
+          <td class="inner_left">
+            <img src="http://wiredtw.s3.amazonaws.com/wp-content/uploads/2013/04/eddy.jpg" width="228" height="173"><br>
+          <h3 style="font-size: 16px; line-height: 18px; margin-top: 10px;" class="profile">林世偉  Eddy Lin<br><small style="font-size: 12px; line-height: 18px;">台灣IBM公司軟體事業處副總經理</small></h3></td>
+          <td class="inner_right" style="font-size: 13px; line-height: 21px;">
+          <img src="http://wiredtw.s3.amazonaws.com/wp-content/uploads/2013/04/ibm-logo.jpg" width="219" height="143">
+            <h2 style="font-size: 18px; line-height: 21px;">BIG DATA = 大「智慧」<br /><br />當資料與日俱增成 BIG DATA，科技龍頭IBM將BIG DATA轉成你我的大「智慧」</h2><br>
+            <p>身為國際科技龍頭，從data到 big data到 exabyte data，IBM在全球用大數據分析，幫客戶找到許多過去未曾被洞察的關鍵事實。從商機的角度，從服務客戶的角度，從產品創新的角度，又或者是從市場決定性競爭實力的角度，這些事實成為決策者更精確判斷的寶貴資訊。EDDY將分享IBM在全球應用大數據分析提昇商業價值的重要案例，決策者與行銷人員應該如何應用大數據分析工具？如何帶領組織成功轉型進入數據大時代？</p>
+          </td>
+        </tr>
+      </table>
+    </div>
+    
+    <!-- 張善政 -->
+    <div id="tab_9" class="tab_content">
+      <table class="inner_content">
+        <tr id="trend_txt">
+          <td class="inner_left">
+            <img src="http://wiredtw.s3.amazonaws.com/wp-content/uploads/2013/04/chang.jpg" width="228" height="173"><br>
+          <h3 style="font-size: 16px; line-height: 18px; margin-top: 10px;" class="profile">張善政<br><small style="font-size: 12px; line-height: 18px;">行政院政務委員</small></h3><br></td>
+          <td class="inner_right" style="font-size: 13px; line-height: 21px;">
+            <h2 style="font-size: 18px; line-height: 21px;">當資訊不對稱不再是技術問題，台灣經濟成長的關鍵下一步是？</h2><br>
+            <p>資訊不對稱是自由市場發展的難題，大數據的普及化，將對經濟發展帶來哪些可能的契機與挑戰？隨著大數據的實現，Open Data的趨勢方興未艾，全球進步國家政府皆致力於公眾大數據的應用發展。台灣政府由行政院科技會報辦公室推動開放政府政策，大數據的應用創新才能百花齊放。經建會科技政委張善政談開放資料的重要性，以及台灣如何需要透過中小企業的創新應用發展，找到下一個經濟發展的新引擎。</p>
+          </td>
+        </tr>
+      </table>
+    </div>
+<!-- 花絮 -->
+    <div id="tab_0" class="tab_content">
+  <div class="sidelights" style="margin-top:15px;">
+    <ul>
+      <li><img src="http://wiredtw.s3.amazonaws.com/wp-content/uploads/2013/04/eddy.jpg" width="119" height="90" border="0"><br>
+        <h3 style="font-size: 16px; line-height: 18px; margin-top: 10px;" class="profile">林世偉  Eddy Lin<br>
+          <small style="font-size: 12px; line-height: 18px;">台灣IBM公司軟體事業處副總經理</small></h3>
+      </li>
+      <li><a href="http://youtu.be/SArueYmqTE4" target="_blank"><img src="http://wiredtw.s3.amazonaws.com/wp-content/uploads/2013/05/ibm-video01.jpg"  width="140" height="79" border="0"/></a><br />
+        <small>IBM林世偉：BIG DATA = 大「智慧」(上)</small></li>
+      <li><a href="http://youtu.be/fDr7575iGuM" target="_blank"><img src="http://wiredtw.s3.amazonaws.com/wp-content/uploads/2013/05/ibm-video02.jpg"  width="140" height="79" border="0"/></a><br />
+        <small>IBM林世偉：BIG DATA = 大「智慧」(中)</small></li>
+      <li><a href="http://youtu.be/LC-ahqxz3Ng" target="_blank"><img src="http://wiredtw.s3.amazonaws.com/wp-content/uploads/2013/05/ibm-video03.jpg"  width="140" height="79" border="0"/></a><br />
+        <small>IBM林世偉：BIG DATA = 大「智慧」(下)</small></li>
+    </ul>
+  </div>
+  <!--div class="sidelights">
+    <ul>
+      <li><img src="http://wiredtw.s3.amazonaws.com/wp-content/uploads/2013/04/chairman.jpg" width="119" height="90" border="0"><br>
+        <h3 style="font-size: 16px; line-height: 18px; margin-top: 10px;">張明正<br>
+          客座總編輯<br />
+          <small style="font-size: 12px; line-height: 18px;">趨勢科技董事長</small></h3>
+      </li>
+      <li><a href="http://youtu.be/TwjPub3AH0E" target="_blank"><img src="http://wiredtw.s3.amazonaws.com/wp-content/uploads/2013/05/trend-video01.jpg"  width="140" height="79" border="0"/></a><br />
+        <small>趨勢科技張明正：大數據-台灣百年難得一見的機會 (上)</small></li>
+      <li><a href="http://youtu.be/fDr7575iGuM" target="_blank"><img src="http://wiredtw.s3.amazonaws.com/wp-content/uploads/2013/05/trend-video02.jpg"  width="140" height="79" border="0"/></a><br />
+        <small>趨勢科技張明正：大數據-台灣百年難得一見的機會 (中)</small></li>
+      <li><a href="http://youtu.be/mKeq7OTwE_0" target="_blank"><img src="http://wiredtw.s3.amazonaws.com/wp-content/uploads/2013/05/trend-video03.jpg"  width="140" height="79" border="0"/></a><br />
+        <small>趨勢科技張明正：大數據-台灣百年難得一見的機會 (下)</small></li>
+    </ul>
+  </div-->
+  <div class="sidelights" style=" border: none;">
+    <ul>
+      <li><img src="http://wiredtw.s3.amazonaws.com/wp-content/uploads/2013/03/etu_01.jpg" width="119" height="90" border="0"><br>
+        <h3 style="font-size: 16px; line-height: 18px; margin-top: 10px;" class="profile">蔣居裕 Fred Chiang<br>
+          <small style="font-size: 12px; line-height: 18px;">Etu負責人</small></h3>
+      </li>
+      <li><a href="http://youtu.be/xrK71J4w_DU" target="_blank"><img src="http://wiredtw.s3.amazonaws.com/wp-content/uploads/2013/05/etu-video01.jpg"  width="140" height="79" border="0"/></a><br />
+        <small>Etu(知意圖)負責人蔣居裕：轉兌數據的價值-從導購到策購</small></li>
+    </ul>
+  </div>
+</div>
+
+    <!-- 報名
+    <div id="tab_0" class="tab_content">
+      <pre style="color: white; margin-left: 30px;font-size: 13px">WIRED 提醒您:
+結帳系統為委外活動通系統，您的個人資料使用方式適用條款明細將詳列於<a href="/abouts/privacy">PRIVACY</a>中。
+購物須知
+．本網站所有商品的售價一律內含5%營業稅，並可透過活動通結帳系統刷卡結帳。
+．本網站商品售價及相關促銷活動僅適用於WIRED.TW線上訂購。
+．WIRED.TW保留接受訂單與否之權利。
+
+運送方式
+．寄送時間：完成付款後，並請提供詳細的寄送資料，客服人員將通知您取票方式。
+．送貨方式：透過康泰納仕時尚網簽約運送公司寄送。
+．注意事項：
+  - 若經配送兩次無法送達，再經本公司以電話或E-mail均無法聯繫逾三天或兩次配送均拒收，
+    本公司將取消該筆訂單，並且全額退款。
+  - 統一發票將於下單成功並確定收貨無誤後，將於15個工作天內送達(不含週六日) 。
+
+．運　　費：僅台灣地區並於活動期間，優惠由本公司吸收。
+
+</pre>
+      <iframe style="margin: 0;" id="accupass_frame" title="活動通報名表" marginwidth="0" marginheight="0" frameborder="0" border="0" scrolling="auto" src="http://www.accupass.com/Event/Register?eid=756100076836458&format=iframe" width="700px" height="250px"><p>很抱歉，您的瀏覽器不支援
+iframe！<a target="_blank" href="http://www.accupass.com/Event/Register?eid=756100076836458&format=iframe">http://www.accupass.com/Event/Register?eid=756100076836458&format=iframe</a></p></iframe>
+    </div>
+
+  </div>
+</div>
+-->
+  </article>
+</div>
+
+<!-------------------------------- SCRIPT ------------------------------------>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+  // switch tabs
+  $(".tab_handler").click(function(e) {
+    e.preventDefault();
+    $(".tab_handler").each(function() {
+      $(this).removeClass("active_handler");
+    });
+    $(".tab_content").each(function() {
+      $(this).css("display", "none");
+    });
+    $(this).addClass("active_handler");
+    var active_tab = $(this).attr("target");
+    $("#" + active_tab).css("display", "block");
+  });
+
+  // switch video
+  $(".etu_video_handler").click(function(e) {
+    e.preventDefault();
+    var etu_flag = $("#etu_txt").css("display");
+    if (etu_flag == "block") {
+      $("#etu_txt").css("display", "none");
+      $("#etu_video").css("display", "block");
+    } else {
+      $("#etu_txt").css("display", "block");
+      $("#etu_video").css("display", "none");
+    }
+  });
+</script>
+

@@ -1,0 +1,33 @@
+#==============================
+#   Redis server setup
+#==============================
+# Redis
+sget redis-server
+# remove bind: 127.0.0.1 in /etc/redis/redis.conf, for listen to all
+
+
+# done, just so simple.
+
+
+#==============================
+#   Console commands
+#     [Ref] http://redis.io/commands
+#==============================
+# config file (change bind: x.x.x.x for security)
+sudo vi /etc/redis/redis.conf
+
+# reboot redis server (after change config)
+sudo service redis-server restart
+
+# test if redis-server alive
+redis-cli ping
+
+# enter redis client console
+redis-cli
+
+# ===commands in redis console===
+> keys *            # look all keys, change * to regex could see what you want
+> hgetall <key>     # get all value under hash(key)
+> flushall          # dump everything
+
+

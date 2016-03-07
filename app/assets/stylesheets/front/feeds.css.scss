@@ -1,0 +1,74 @@
+@import "base";
+
+.cpanel_form {
+  .accordion-toggle {
+    &:hover {
+      color: #1083bc;
+      text-decoration: none;
+    }
+    $snav_in: #ddd;
+    $snav_out: #aaa;
+    @include background-image(linear-gradient(color-stops($snav_in 0%, $snav_out 100%)));
+  }
+  .btn {margin: 5px;}
+  .span3 {
+    border-right: 1px solid #ccc;
+    input:not(.btn, .radio_buttons), textarea {width: 80%;}
+  }
+  tr {
+    border-top: 1px solid #ccc;
+  }
+  .radio {
+    display: inline-block;
+    margin: 2px 10px;
+  }
+  .collection_check_boxes {
+    width: auto;
+  }
+  .checkbox {
+    display: inline-block;
+    margin: 2px 5px 2px 0;
+    padding: 0;
+  }
+}
+
+.cpanel_fullform {
+  h4 {margin: 0; }
+  hr {margin: 10px 0;}
+  label {
+    display: inline-block;
+    width: 20%;
+    padding: 5px 0;
+    vertical-align: top;
+    font-size: 16px;
+    line-height: 20px;
+    text-rendering: optimizelegibility;
+  }
+  input {
+    display: inline-block;
+    margin: 0;
+    &:not(.btn, .check_boxes) {width: 80%;}
+  }
+
+  textarea {width: 80%;}
+  #author {
+    * {display: inline-block;}
+    margin-top: -4px;
+    select {margin-left: -4px;}
+    .btn {margin-top: -10px; width: auto;}
+  }
+  #post_content {width: 100%;}
+}
+
+.check_box_sea {
+  width: 100%;
+  label, input {
+    padding: 0;
+    margin: 0;
+  }
+  border: solid 1px #ccc;
+  display: inline-block;
+  overflow-y: scroll;
+  height: 100px;
+}
+

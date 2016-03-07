@@ -1,0 +1,26 @@
+<div class="bullet-curate">
+  <div class="bullet-curate-btn">
+    <% if user_signed_in? %>
+      <% status = current_user.collection_ids.include?(bullet.id) ? "follow" : "unfollow" %>
+      <%= link_to("", "", :onclick => "event.preventDefault();", :class => status, :bid => bullet.id) %>
+    <% else %>
+      <%= link_to("", "javascript:login_first();", :class => "dummyfollow") %>
+    <% end %>
+    <span class="count"><%= bullet.curate_score + bullet.follower_count %></span>
+  </div>
+  <div class="bullet-curate-menu">
+    <div class="bullet-curate-menu-title">分享此文：</div>
+    <%= link_to("", "http://www.facebook.com/sharer/sharer.php?u=#{bullet.link}", :target => "_blank", :id => "soc-facebook", :title => "分享到Facebook") %>
+    <%= link_to("", "https://plus.google.com/share?url=#{bullet.link}", :target => "_blank", :id => "soc-google", :title => "分享到Google+") %>
+    <%= link_to("", "http://twitter.com/home?status=#{bullet.title} #{bullet.link}", :target => "_blank", :id => "soc-twitter", :title => "分享到Twitter") %>
+    <%= link_to("", "http://www.plurk.com/?qualifier=shares&status=#{bullet.title}/#{bullet.link}", :target => "_blank", :id => "soc-plurk", :title => "分享到Plurk") %>
+  </div>
+  <% if not bullet.relates.empty? %>
+    <div class="bullet-relate-posts">
+      <p>[延伸閱讀]</p><hr>
+      <% bullet.relates.limit(5).each do |i| %>
+        <p><%= link_to("[#{i.source.capitalize}] #{i.title} / #{i.created_at.to_s[0..9]}", i.link) %></p>
+      <% end %>
+    </div>
+  <% end %>
+</div>

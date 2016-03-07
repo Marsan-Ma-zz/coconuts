@@ -1,0 +1,20 @@
+<div class='well'>
+  <h3 class='page-header'><%= "Welcome back, #{current_user.name}!" %></h3>
+
+  <% if current_user.admin? %>
+  <p><strong>Content</strong></p>
+  <ul>
+    <li>Total posts: <%= link_to("#{Post.count}", "#") %></li>
+    <li>Your posts: <%= link_to("#{Post.where(:author_id => current_user.id).count}", "#") %></li>
+  </ul>
+  <% end %>
+
+  <%  if current_user.editor? %>
+  <p><strong>PageView</strong></p>
+  <ul>
+    <li>Today's Posts: <%= link_to("#{Post.where(:published_at.gt => Time.now.change(:hour => 0)).count}", "#") %></li>
+    <li>This Week Posts: <%= link_to("#{Post.where(:published_at.gt => Time.now.beginning_of_week).count}", "#") %></li>
+    <li>This Month Posts: <%= link_to("#{Post.where(:published_at.gt => Time.now.beginning_of_month).count}", "#") %></li>
+  </ul>
+  <% end %>
+</div>

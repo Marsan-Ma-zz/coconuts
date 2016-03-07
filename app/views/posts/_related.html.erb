@@ -1,0 +1,14 @@
+<div id="related_posts">
+  <table style="table-layout:fixed; clear: both; text-decoration: none;">
+    <tr>
+    <% related_posts.each do |i| %>
+      <td valign="top" style="padding: 2px; width: 20%; border-left: 1px solid #ccc; font-size: 14px; line-height: 18px;">
+        <a href=<%= post_path(i.slug) %>>
+          <div style="background-image: url('<%= i.thumbnail %>'); height: 100px;"></div>          
+          <%= trim(i.title, 50) %>
+        </a>
+      </td>
+    <% end %>
+    </tr>
+  </table>
+</div>

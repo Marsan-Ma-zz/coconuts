@@ -1,0 +1,20 @@
+<div class="box cpanel_form cpanel_fullform">
+  <div>
+    <div class="divider_cap"><span>我的Wired RSS Feed</span></div>
+    <%= simple_form_for(@feed) do |f| %>
+      <%= f.input :title, :label => "RSS命名", :input_html => {:value => "#{current_user.name ||= "annoymace"}的Wired RSS"} %>
+      <%= f.input :slug, :label => "RSS網址", :placeholder => "只能由小寫英文字母、數字及底線組成" %>
+      <p>(您的專屬RSS網址將會是 <%= "http://#{Setting.domain}/feed/[上方此欄的命名]" %>)</p>
+
+      <label class="select optional" for="post_status">訂閱的文章類別</label>
+      <div class="check_box_sea" style="height: 50px;">
+        <%= f.association :categories, :collection => Category.asc(:name), :label => false, :as => "check_boxes" %>
+      </div>
+      <%= f.submit "儲存", :class => "btn btn-primary" %>
+      <%= link_to("取消", :back, :class => "btn") %>
+    <% end %>
+  </div>
+</div>
+  
+
+

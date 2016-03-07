@@ -1,0 +1,109 @@
+@import "base";
+
+//=========================================================
+//  categories
+//=========================================================
+a {
+  text-decoration: none !important;
+  &:hover {
+    text-decoration: none !important;
+  }
+}
+
+.home_cat {
+  display: inline-block;
+  vertical-align: top;
+  margin: 1%;
+  .cat_ribbon{
+    text-transform:capitalize;
+    color: #eee;  
+    font-weight: bold;
+    background: #313131;
+    opacity: 0.9;
+    padding: 4px 25px;;
+    float: left;
+    text-align: center;
+    left: -5px;
+    position: relative;
+    top: -5px;
+    z-index: 1000;
+  }
+  .cat_img {
+    @include base_background(cover);
+  }
+  .cat_txt {
+    h3 {
+      font-size: 18px;
+      line-height: 25px;
+    }
+    p {
+      font-size: 13px;
+      line-height: 20px;
+    }
+  }
+  a iframe {
+    position: relative;
+    top: -20px;
+    margin-bottom: -20px;
+  }
+  h5 {
+    color: #000;
+  }
+  h3 {color: #111;}
+  p {
+    color: #444;
+  }
+  &:hover{
+    h3, p, .author {
+      color: #007ca5;
+    }
+  }
+}
+.author { 
+  text-align: right;
+  color: #999;
+}
+
+#more_news {
+  background-image: url($aws_static + "/slash-white.png");
+  background-color: #eee;
+  border-bottom: 2px solid #CCCCCC;
+  border-top: 2px solid #CCCCCC;
+  width: 100%;
+  padding: 20px 0;
+  font-size: 20px;
+  text-align: center;
+  color: #666;
+}
+
+.side_recommend {
+  color: black;
+  iframe {width: 100%;}
+}
+
+#loading_icon {
+  display:none;
+  opacity: 0.8;
+  width: 280px;
+  height: 140px;
+  text-align: center;
+  background: white;
+  margin: 10px auto;
+  @include set_background($aws_static + "/loading_icon.gif");
+  @include border-radius(25px);
+  @include box-shadow(#666 1px 1px 5px 1px);
+}
+
+
+#infinite_ending {
+  display:none;
+  opacity: 0.8;
+  width: 280px;
+  height: 140px;
+  text-align: center;
+  background: white;
+  margin: 10px auto;
+  @include set_background('http://2.bp.blogspot.com/-WbXlKc_MfDc/T79BX38bP-I/AAAAAAAAGBQ/boH18_Qmo_c/s1600/THE+END.jpg');
+  @include box-shadow(#666 1px 1px 5px 1px);
+}
+

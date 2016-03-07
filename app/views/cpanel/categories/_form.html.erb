@@ -1,0 +1,42 @@
+<div id="cpanel_categories" class="row-fluid">
+  <div class="span3">
+    <h3><%="Category #{cap_first(params[:action])}" %></h3>
+    <%= simple_form_for([:cpanel, @category]) do |f| %>
+      <%= f.input :name, :placeholder => "could be any name", :label => "分類名" %>
+      <%= f.input :slug, :placeholder => "should be a-z, 0-9, -, _", :label => "網址階層(slug)" %>
+      <%= f.input :description, :placeholder => "description", :label => "說明", :as => "text", :input_html => {:rows => "5"} %>
+    
+      <%= f.submit "儲存", :class => "btn btn-primary" %>
+      <%= link_to("取消", :back, :class => "btn") %>
+    <% end %>
+  </div>
+  
+  <div class="span9">
+    <h3>Existing Category</h3>
+    <table id='category_container' class="table table-striped">
+      <thead>
+        <tr class='noborder'>
+          <th>Name</th>
+          <th>Slug</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <% @categories.each do |cat| %>
+        <tr>
+          <td><%= cat.name %><br>
+            <small>
+              <%= link_to "#{cat.post_count} posts", cpanel_posts_path(:category => cat.id) %> |
+              <%= link_to "Edit", edit_cpanel_category_path(cat) %> |
+              <%= link_to("Delete", cpanel_category_path(cat), :method => :delete,
+                  'data-confirm' => "Are you sure to DELETE this post?") if (current_user.admin? && cat.id)  %>
+            </small>
+          </td>
+          <td><%= cat.slug %></td>
+          <td><%= cat.description %></td>
+        </tr>
+      <% end -%>
+    </table>
+    <%= paginate @categories %>
+  </div>
+</div>
+

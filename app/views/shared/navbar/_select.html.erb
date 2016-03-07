@@ -1,0 +1,38 @@
+<select onchange="window.open(this.value,'_self');" id="nav_mobile">
+  <optgroup label="Tech">
+      <option value="<%= posts_path(:category => "technology") %>">All Tech</option>
+      <option value="<%= posts_path(:tag => "google") %>">Google</option>
+      <option value="<%= posts_path(:tag => "gadgets") %>">Gadgets</option>
+  </optgroup>
+  <optgroup label="Business">
+      <option value="<%= posts_path(:category => "business") %>">All Business</option>
+      <option value="<%= posts_path(:tag => "media") %>">Media</option>
+      <option value="<%= posts_path(:tag => "startup") %>">Startups</option>
+  </optgroup>
+  <optgroup label="Insider">
+      <option value="<%= insiders_path %>">All Insider</option>
+  </optgroup>
+  <optgroup label="Science">
+      <option value="<%= posts_path(:category => "science") %>">All Science</option>
+      <option value="<%= posts_path(:tag => "science_blogs") %>">Science Blogs</option>
+  </optgroup>
+  <optgroup label="People">
+      <option value="<%= posts_path(:tag => "opinion") %>">Opinion</option>
+      <option value="<%= posts_path(:tag => "innovation") %>">Innovation</option>
+  </optgroup>
+  <optgroup label="Entertainment">
+      <option value="<%= posts_path(:category => "entertainment") %>">All Entertainment</option>
+      <option value="<%= posts_path(:tag => "gaming") %>">Game</option>
+      <option value="<%= posts_path(:tag => "film") %>">Film</option>
+      <option value="<%= posts_path(:tag => "music") %>">Movie</option>
+  </optgroup>
+  <optgroup label="Design">
+      <option value="<%= posts_path(:tag => "global_design") %>">Global</option>
+      <option value="<%= posts_path(:tag => "local_design") %>">Local</option>
+  </optgroup>
+  <optgroup label="Events">
+      <option value="<%= event_path(:id => "2013_spring_forum") %>">Events</option>
+      <option value="<%= event_path(:id => "big_data_magzine") %>">Big Data</option>
+      <option value="<%= features_path %>">Features</option>
+  </optgroup>
+</select>
